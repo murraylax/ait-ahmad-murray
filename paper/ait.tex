@@ -1,0 +1,140 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{calc}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{fancyheadings}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{rotating}
+\usepackage{harvard}
+\usepackage{aer}
+\usepackage{aertt}
+\usepackage{verbatim}
+
+\setlength{\voffset}{0in}
+\setlength{\topmargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{.4in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\footskip}{.1in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\parskip}{0pc}
+
+\renewcommand{\baselinestretch}{1.5}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} (\citeyear{#1})}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\app}
+{
+\appendix
+}
+
+\newcommand{\appsection}[1]
+{
+\let\oldthesection\thesection
+\renewcommand{\thesection}{Appendix \oldthesection}
+\section{#1}\let\thesection\oldthesection
+\renewcommand{\theequation}{\thesection\arabic{equation}}
+\setcounter{equation}{0}
+}
+
+\pagestyle{fancyplain}
+\lhead{}
+\chead{Macroeconomic Implications of Cost Shocks With Average Inflation Targeting}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{singlespace}
+\title{Macroeconomic Implications of Cost Shocks With Various Average Inflation Targeting Regimes}
+\date{\today}
+\author{
+  Yamin S. Ahmad\\
+  Department of Economics\\
+  University of Wisconsin-Whitewater\footnote{\textit{E-mail address}: \texttt{ahmady@uww.edu}}
+  \and
+  James M. Murray\\
+  Department of Economics\\
+  University of Wisconsin-La Crosse\footnote{\textit{E-mail address}: \texttt{jmurray@uwlax.edu}}
+}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\abstract{We use a three-equation New Keynesian model with average inflation targeting to demonstrate the impact that cost shocks have in Taylor rules with varying forward-looking and backward-looking horizons for the target average inflation.}\newline
+
+\noindent \textit{Keywords}: \\
+\noindent \textit{JEL classification}:
+\end{singlespace}
+\end{titlepage}
+
+\newpage
+
+\section{Model}
+
+This paper builds upon the following standard three-equation New Keynesian model:
+\begin{equation}\label{eq:IS}
+  x_t = E_t x_{t+1} - \frac{1}{\sigma} \left( r_t - E_t \pi_{t+1} \right) + \xi_t^{x}
+\end{equation}
+\begin{equation}\label{eq:PhillipsCurve}
+  \pi_t = \beta E_t \pi_{t+1} + \kappa x_t + \xi_t^{\pi}
+\end{equation}
+\begin{equation}\label{eq:TaylorRule}
+  r_t = \rho_r r_{t-1} + (1-\rho_r) \left( \psi_\pi \pi_t + \psi_x x_t \right) + \xi_t^{r}
+\end{equation}
+
+Equation (\ref{eq:IS}), or the IS equation, can be derived from a microfounded dynamic model with utility maximization over consumption. Here $x_t$ denotes the output gap at time $t$, $E_t x_{t+1}$ denotes time $t$ rational expectation for the next period's output gap, $r_t$ denotes the nominal interest rate at time $t$, $\pi_t$ denotes the time $t$ inflation rate, and  $E_t \pi_{t+1}$ denotes the time $t$ rational expectation for the next period's inflation rate. The equation captures how the demand for output in the current period depends positively on expected future income and negatively on the expected real interest rate, given the current nominal interest rate and the expected rate of inflation. The preference parameter, $\sigma$ is related to consumers' intertemporal elasticity of substitution. The shock term, $\xi_t^x$, represents the possibility of a demand shock.
+
+Equation (\ref{eq:PhillipsCurve}), or the Phillips Curve, can be derived from profit maximizing behavior of monopolistically-competitive firms subject to a price-adjustment friction. The preference parameter $\beta$ is the discount factor and $\kappa$ is a reduced form parameter that is inversely related to the degree of price stickiness. The equation captures firms' price adjustment decisions are positively related to the expected future inflation and positively related to their marginal costs, which is the most simple framework is proportional to the output gap, $x_t$. The shock term, $\xi_t^\pi$, represents a possible cost shock, or stagflationary shock.
+
+Finally, equation (\ref{eq:TaylorRule}) is a description of the monetary policy rule. The central bank's choice for the interest rate includes persistence, captured by parameter $\rho_r$, and includes a positive response to an increase in current inflation, captured by $\psi_\pi$, and a response to an increase in the output gap, captured by parameter, $\psi_x$. The shock term, $\xi_t^r$, denotes a monetary policy shock.
+
+Regarding the IS and the Phillips curve equations, we will consider the possibility that a fraction $\lambda \in [0,1)$ of agents form naive expectations, so that on the aggregate, the time $t$ expectations for the future output gap and future inflation rate are given by,
+\begin{equation}\label{eq:xe}
+  x_{t+1|t}^e = \lambda x_t + (1-\lambda) E_t x_{t+1},
+\end{equation}
+\begin{equation}\label{eq:pie}
+  \pi_{t+1|t}^e = \lambda \pi_t + (1-\lambda) E_t \pi_{t+1},
+\end{equation}
+where $x_{t+1|t}^e$ denotes expectation made at time $t$ regarding the value $x$ in time $t+1$. When $\lambda=0$, $x_{t+1|t}^e = E_t x_{t+1}$, so expectations are fully rational. When $\lambda$ is greater than zero, this implies that a cost shock can have a larger impact on inflation, because only a fraction of agents in the economy use the information that inflation will come down following a monetary response that increases the interest rate. This effect can be even larger when the central bank employs average inflation targeting, allowing inflation to remain above its target from some length of time.
+
+Rather than targeting the current inflation rate, we consider the following average inflation targeting Taylor rule,
+\begin{equation}\label{eq:TaylorRuleAIT}
+  r_t = \rho_r r_{t-1} + (1-\rho_r) \left( \psi_\pi E_t \pi_t^A + \psi_x x_t \right) + \xi_t^{r},
+\end{equation}
+which is simply equation (\ref{eq:TaylorRule}) with $E_t \pi_t^A$ in substitution for $\pi_t$, and $E_t \pi_t^A$ is equal to some average inflation rate over some window time, where a rational expectation operator is included for the possibility that the window includes future periods. The Federal Reserve has not been specific on how long such a window may be, and whether that window is forward-looking, backward-looking, or both. For example, the average inflation target could possibly look like,
+\begin{equation}\label{eq:ait}
+  E_t \pi_t^A = \frac{m+1}{m+n+1}\sum_{j=0}^{m} \pi_{t-j} + \frac{n}{m+n+1}\sum_{j=1}^{n} E_t \pi_{t+j},
+\end{equation}
+where the window looks backward $m$ periods, includes the current period (hence the $m+1$), and looks forward $n$ periods. Such a representation gives an equal weight to all observations within a window. It is both mathematically convenient and plausible to consider that the target be a weighted average, where observations closer to the current period are weighted more heavily than observations in the farther future or farther past. Consider the following
+
+\end{document}
