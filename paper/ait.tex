@@ -44,7 +44,7 @@
 \newcommand{\bdm}{\begin{displaymath}}
 \newcommand{\edm}{\end{displaymath}}
 \newcommand{\script}[1]{\begin{cal}#1\end{cal}}
-\newcommand{\citee}[1]{\citename{#1} (\citeyear{#1})}
+\newcommand{\citee}[1]{\citename{#1} \citeyear{#1}}
 \newcommand{\h}[1]{\hat{#1}}
 \newcommand{\ds}{\displaystyle}
 
@@ -191,7 +191,7 @@ It may be more realistic to suppose that the central bank puts more weight on mo
 
 The full model is given by the following ten equations: IS curve, equation (\ref{eq:ISe}); the Phillips curve, equation (\ref{eq:PhillipsCurvee}); the definition for the possibly non-rational expected future output gap and future inflation, equations (\ref{eq:xe}) and (\ref{eq:pie}), respectively; the evolution for the IS and Phillips curve shocks, equations (\ref{eq:demandshock}) and (\ref{eq:costshock}), respectively; the Taylor rule with average inflation targeting, equation (\ref{eq:TaylorRuleAIT}); the average inflation target, equation (\ref{eq:ait}); the backward-looking average, equation (\ref{eq:backward}); and the forward-looking average, equation (\ref{eq:forward}). There are ten endogenous variables that include the output gap, $x_t$; the inflation rate, $\pi_t$; the interest rate, $r_t$; expected future output gap, $x_{t+1|t}^e$; expected future inflation, $\pi_{t+1|t}^e$; the average inflation target, $\pi_t^A$; the backward-looking average inflation rate, $\pi_t^B$; the forward-looking average inflation rate, $\pi_t^F$; and the IS and Phillips curve shocks, $\xi_t^x$ and $\xi_t^\pi$, respectively.
 
-We calibrate the model using the parameters in Table \ref{tb:parms}.
+We calibrate the model using the parameters in Table \ref{tb:parms}. In the next section we consider alternative calibrations for the average inflation targeting parameters and the degree of rational versus naive expectations. Table \ref{tb:parmsvary} shows variations on those parameters that are considered. For a given parameterization, we solve the linear model using the method in \citee{sims_solving_2002}.
 
 \begin{table}\caption{Parameter Calibrations}\label{tb:parms}
   \begin{center}
@@ -224,5 +224,13 @@ We calibrate the model using the parameters in Table \ref{tb:parms}.
     \end{tabular}
   \end{center}
 \end{table}
+
+\section{Results}
+
+
+
+\bibliographystyle{aer}
+\bibliography{ait} % Entries are in the refs.bib file
+
 
 \end{document}
