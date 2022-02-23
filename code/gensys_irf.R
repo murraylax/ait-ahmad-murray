@@ -1,5 +1,6 @@
 library(tsibble)
 library(scales)
+library(QZ)
 
 gensys_irf_ts <- function(gsys, shocks, nirf, varnames, shocknames) {
   
