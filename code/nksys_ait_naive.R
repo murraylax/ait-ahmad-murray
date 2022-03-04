@@ -91,6 +91,154 @@ sigma_r <- 0.25 # Shock to monetary policy (25 basis points)
 rho_x <- 0.7 # Persistence in the demand shock
 rho_pi <- 0.7 # Persistence in the supply shock
 
+nksys <- function(gamma, deltaB, deltaF, lambda)
+{
+  # Setup matrices
+  Gamma0 <- matrix(nrow=neq, ncol=nvar, data=0)
+  C <- matrix(nrow=neq, ncol=1, data=0)
+  Gamma1 <- matrix(nrow=neq, ncol=nvar, data=0)
+  Psi <- matrix(nrow=neq, ncol=nshocks, data=0)
+  Pi <- matrix(nrow=neq, ncol=nexp, data=0)
+  Sigma <- matrix(nrow=nshocks, ncol=nshocks, data=0)
+  
+  
+  # IS equation
+  # x_t = x_{t+1}^e - 1/sigma \left[(r_t - r*) - (\pi_{t+1}^e - \pi*)\right] + \epsilon_t^x
+  Gamma0[eq_IS, i_var_x] <- 1.0
+  Gamma0[eq_IS, i_var_r] <- 1.0/sigma
+  Gamma0[eq_IS, i_var_xe_alt] <- -1.0 
+  Gamma0[eq_IS, i_var_pie_alt] <- -1.0/sigma
+  C[eq_IS, 1] <- 1.0/sigma*(rstar-pistar)
+  Gamma0[eq_IS, i_var_shock_x] <- -1.0
+  
+  # Phillips curve
+  # (\pi_t - \pi*) = \beta (\pi_{t+1}^e - \pi*) + \kappa x_t + \epsilon_t^\pi
+  Gamma0[eq_Phillips, i_var_x] <- -1.0*kappa
+  Gamma0[eq_Phillips, i_var_pi] <- 1.0
+  Gamma0[eq_Phillips, i_var_pie_alt] <- -1.0*beta
+  C[eq_Phillips, 1] <- (1.0-beta)*pistar
+  Gamma0[eq_Phillips, i_var_shock_pi] <- -1.0
+  
+  # Taylor Rule
+  # r_t - r* = \rho_r (r_{t-1} - r*) + (1-\rho_r) \left[ \psi_\pi (\pi_t^A - \pi^*) + \psi_x x_t \right] + \epsilon_t^r
+  Gamma0[eq_Taylor, i_var_x] <- -1.0*(1.0-rho_r)*psi_x
+  Gamma0[eq_Taylor, i_var_piA] <- -1.0*(1.0-rho_r)*psi_pi
+  Gamma0[eq_Taylor, i_var_r] <- 1.0
+  C[eq_Taylor, 1] <- (1.0-rho_r)*(rstar - psi_pi*pistar)
+  Gamma1[eq_Taylor, i_var_r] <- rho_r
+  Gamma0[eq_Taylor, i_var_shock_r] <- -1.0
+  
+  # Average inflation
+  # \pi_t^A = \gamma \pi_t^B + (1 - \gamma) \pi_t^F
+  Gamma0[eq_piA, i_var_piA] = 1.0
+  Gamma0[eq_piA, i_var_piB] = -1.0*gamma
+  Gamma0[eq_piA, i_var_piF] = -1.0*(1.0 - gamma)
+  
+  # Backward-looking average inflation
+  # \pi_t^B = (1 - \delta_B) \pi_{t-1}^B + \delta_B \pi_t
+  Gamma0[eq_piB, i_var_piB] <- 1.0
+  Gamma1[eq_piB, i_var_piB] <- 1.0 - deltaB
+  Gamma0[eq_piB, i_var_pi] <- -1.0*deltaB
+  
+  #Forward-looking average inflation
+  # \pi_t^F = (1 - \delta_F) E_t \pi_{t+1}^F + \delta_F E_t \pi_{t+1}
+  Gamma0[eq_piF, i_var_piF] <- 1.0
+  Gamma0[eq_piF, i_var_piFe] <- -1.0*(1.0-deltaF)
+  Gamma0[eq_piF, i_var_pie] <- -1.0*deltaF
+  
+  
+  # Output Gap Expectation
+  # x_t = E_{t-1} x_t + \eta^x,t 
+  Gamma0[eq_xe, i_var_x] <- 1.0
+  Gamma1[eq_xe, i_var_xe] <- 1.0
+  Pi[eq_xe, i_exp_xe] <- 1.0
+  
+  # Inflation Expectation
+  Gamma0[eq_pie, i_var_pi] <- 1.0
+  Gamma1[eq_pie, i_var_pie] <- 1.0
+  Pi[eq_pie, i_exp_pie] <- 1.0
+  
+  # Forward Average Inflation Expectation
+  Gamma0[eq_piFe, i_var_piF] <- 1.0
+  Gamma1[eq_piFe, i_var_piFe] <- 1.0
+  Pi[eq_piFe, i_exp_piFe] <- 1.0
+  
+  # Demand Shock
+  Gamma0[eq_shock_x, i_var_shock_x] <- 1.0
+  Gamma1[eq_shock_x, i_var_shock_x] <- rho_x
+  Psi[eq_shock_x, i_shock_x] <- 1.0
+  
+  # Cost Shock
+  Gamma0[eq_shock_pi, i_var_shock_pi] <- 1.0
+  Gamma1[eq_shock_pi, i_var_shock_pi] <- rho_pi
+  Psi[eq_shock_pi, i_shock_pi] <- 1.0
+  
+  # Monetary Policy Shock
+  Gamma0[eq_shock_r, i_var_shock_r] <- 1.0
+  Psi[eq_shock_r, i_shock_r] <- 1.0
+  
+  # Non-rational expectation for output gap
+  # x_{t+1}^e = \lambda x_t + (1-\lambda) E_t x_{t+1}
+  Gamma0[eq_xe_alt, i_var_xe_alt] <- 1.0
+  Gamma0[eq_xe_alt, i_var_x] <- -1.0*lambda
+  Gamma0[eq_xe_alt, i_var_xe] <- -1.0*(1.0 - lambda)
+  
+  # Non-rational expectation for inflation
+  # \pi_{t+1}^e = \lambda \pi_t + (1-\lambda) E_t \pi_{t+1}
+  Gamma0[eq_pie_alt, i_var_pie_alt] <- 1
+  Gamma0[eq_pie_alt, i_var_pi] <- -1.0*lambda
+  Gamma0[eq_pie_alt, i_var_pie] <- -1.0*(1.0 - lambda)
+  
+  # Structural shocks covariance matrix
+  Sigma[i_shock_x, i_shock_x] = sigma_x * sigma_x
+  Sigma[i_shock_pi, i_shock_pi] = sigma_pi * sigma_pi
+  Sigma[i_shock_r, i_shock_r] = sigma_r * sigma_r
+  
+  # Standard Deviation of Shocks
+  shocks_stddev <- sqrt(diag(Sigma))
+  
+  nksys.list <- list(Gamma0=Gamma0, Gamma1=Gamma1, C=C, Psi=Psi, Pi=Pi, Sigma=Sigma, shocks_stdev=shocks_stdev)
+  return(nksys.list)
+}
+
+check_nksys <- function(nksys.list) {
+  n <- nrow(nksys.list$Gamma0)
+  
+  A <- matrix(as.complex(nksys.list$Gamma0), nrow=n, ncol=n)
+  B <- matrix(as.complex(nksys.list$Gamma1), nrow=n, ncol=n)
+
+  nkqz <- qz.zgges(A,B)
+  eigv <- nkqz$APLHA / nkqz$BETA
+  eigv
+  
+  qz.ztgsen(nkqz$S, nkqz$T, nkqz$Q, nkqz$Z)
+  eigv <- diag(nkqz$T) / diag(nkqz$S) # This doesn't work because some of the eigenvalues are complex. Which ones do we pick?
+  eigv
+  abs(eigv)>1
+}
+  # Solve System
+  nksys <- new(gensys)
+  nksys$build(Gamma0, Gamma1, C, Psi, Pi)
+  nksys$solve()
+  nksys$G_sol
+  nksys$impact_sol
+  
+  # Check for indeterminacy
+  bIndeterminacy <- FALSE
+  nkqz <- ordqz(Gamma0, Gamma1)
+  eigv <- diag(nkqz$T) / diag(nkqz$S)
+  if(sum(eigv>=1) < nexp) {
+    bIndeterminacy <- TRUE
+  } 
+  
+  nirf <- 12
+  irf.ts <- gensys_irf_ts(nksys, shocks=shocks_stdev, nirf=nirf, varnames=varnames, shocknames=shocknames)
+  
+  irf.ts$bIndeterminacy <- bIndeterminacy
+  
+  return(irf.ts)
+}
+
 nkmodel <- function(gamma, deltaB, deltaF)
 {
   # Setup matrices
@@ -219,6 +367,15 @@ nkmodel <- function(gamma, deltaB, deltaF)
 }
 
 
+
+# Test out the model
+gamma = 0.5
+deltaB = 0.25
+deltaF = 0.25
+lambda = 0.9
+nksys.list <- nksys(gamma,deltaB,deltaF,lambda)
+
+
 # Put all the data here
 irf_all.df <- tibble()
 
@@ -226,8 +383,6 @@ irf_all.df <- tibble()
 deltavals <- c(0.25, 0.5, 1)
 deltavals <- 0.125
 lambda <- 0.0 # Weight of non-rational expectation on naive forecast (=0 is perfectly rational expectations)
-
-
 
 # Backward looking windows
 gamma <- 1.0 # Backward looking weight
