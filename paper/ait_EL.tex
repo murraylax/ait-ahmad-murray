@@ -32,6 +32,7 @@
 % Create arg max/min operator
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\E}{\mathbb{E}}
 
 \newcommand{\bi}{\begin{itemize}}
 \newcommand{\ei}{\end{itemize}}
@@ -96,51 +97,45 @@
 
 
 \section{\label{Intro}Introduction}
-In August 2020, the Federal Reserve became the first central bank to adopt average inflation targeting (AIT) as their monetary policy framework. At the Jackson Hole symposium, Jerome Powell laid out the idea that under their new strategy, inflation could temporarily deviate in the short run from the Fed's inflation target, as long as the average level of inflation in the medium to long run remained consistent with the Fed's target. Consequently under AIT, if inflation were to consistently remained below its target for some period, it would be followed for some period where inflation would remain above its target, and vice versa. In this way, one aim of adopting an AIT framework is to help provide a nominal anchor where long-run inflation expectations are consistent with the central bank's target. 
+In August 2020, the Federal Reserve became the first central bank to adopt average inflation targeting (AIT) as their monetary policy framework. At the Jackson Hole symposium, Fed Chairman Jerome Powell laid out their new strategy, under which inflation could temporarily deviate in the short run from the Fed's inflation target, as long as the average level of inflation in the medium to long run remained consistent with the Fed's target. Consequently under AIT, if inflation were to consistently remain below its target for some period, it would be followed for some period where inflation would remain above its target, and vice versa. In this way, one aim of adopting an AIT framework is to help provide a nominal anchor where long-run inflation expectations are consistent with the central bank's target. 
 
 A slew of academic research has subsequently begun to revisit the AIT framework, examining a range of issues such as the welfare implications under AIT (e.g. \citealp{budianto_average_2020}; \citealp{eo_average_2020}), to how adoption of AIT has impacted inflation expectations (e.g. \citealp{coibion_average_2020}; \citealp{hoffmann_would_2022}). A central question that pertains to the literature on the AIT framework is how the `average' level of inflation is determined. Is the average based upon past values of observed inflation? Does it depend purely on expectations of future inflation? Or is it a hybrid of the two? 
 
-In this paper, we examine this issue within the context of a standard New Keynesian model. We evaluate how construction of `average' inflation - from the size of the window, to whether the average level of inflation is backwards or forwards looking, or a hybrid - impacts the path of inflation from an inflation shock, as well as its impact on central bank credibility.
+In this paper, we examine this issue within the context of a standard New Keynesian model. We evaluate how the construction of `average' inflation - from the size of the window used to determine the average value, to whether the average level of inflation is based upon backwards or forwards looking values, or even a hybrid of the two - impacts the path of inflation from an inflation shock, as well as its impact on central bank credibility.
 
 
 \section{\label{Model}Model}
+This paper builds upon a standard representative agent New Keynesian (RANK) model along the lines of \cite{clarida1999science} and \cite{steinsson2003optimal}. This standard model consists of infinitely lived optimizing households, monopolistically-competitive firms, and a central bank.  
 
 \subsection{Baseline Framework}
-
-This paper builds upon the following standard three-equation New Keynesian model:
-\begin{equation}\label{eq:IS}
-	x_t = E_t x_{t+1} - \frac{1}{\sigma} \left( r_t - E_t \pi_{t+1} \right) + \xi_t^{x}
-\end{equation}
-\begin{equation}\label{eq:PhillipsCurve}
-	\pi_t = \beta E_t \pi_{t+1} + \kappa x_t + \xi_t^{\pi}
-\end{equation}
-\begin{equation}\label{eq:TaylorRule}
-	r_t = \rho_r r_{t-1} + (1-\rho_r) \left( \psi_\pi \pi_t + \psi_x x_t \right) + \xi_t^{r}
-\end{equation}
-
-Equation (\ref{eq:IS}), or the IS equation, can be derived from a microfounded dynamic model with utility maximization over consumption. Here $x_t$ denotes the output gap at time $t$, $E_t x_{t+1}$ denotes time $t$ rational expectation for the next period's output gap, $r_t$ denotes the nominal interest rate at time $t$, $\pi_t$ denotes the time $t$ inflation rate, and  $E_t \pi_{t+1}$ denotes the time $t$ rational expectation for the next period's inflation rate. The equation captures how the demand for output in the current period depends positively on expected future income and negatively on the expected real interest rate, given the current nominal interest rate and the expected rate of inflation. The preference parameter, $\sigma$ is inversely related to consumers' intertemporal elasticity of substitution. An increase in the expected real interest rate increases the opportunity cost of current consumption. The smaller is $\sigma$ the larger is the change to current demand for output in response to an increase in the expected real interest rate. The shock term, $\xi_t^x$, represents a demand shock, perhaps due to a shock to the marginal utility of consumption.
-
-Equation (\ref{eq:PhillipsCurve}), or the Phillips Curve, can be derived from profit maximizing behavior of monopolistically-competitive firms subject to a price-adjustment friction. The preference parameter $\beta$ is the discount factor and $\kappa$ is a reduced form parameter that is inversely related to the degree of price stickiness. The equation captures firms' price adjustment decisions are positively related to the expected future inflation and positively related to their marginal costs, which is the most simple framework is proportional to the output gap, $x_t$. The shock term, $\xi_t^\pi$, represents a possible cost shock, or stagflationary shock.
-
-Finally, equation (\ref{eq:TaylorRule}) is a description of the monetary policy rule. The central bank's choice for the interest rate includes persistence, captured by parameter $\rho_r$, and includes a positive response to an increase in current inflation, captured by $\psi_\pi$, and a response to an increase in the output gap, captured by parameter, $\psi_x$. The shock term, $\xi_t^r$, denotes a monetary policy shock.
-
-Regarding the IS and the Phillips curve equations, we will consider the possibility that a fraction $\lambda \in [0,1)$ of agents form naive expectations, so that on the aggregate, the time $t$ expectations for the future output gap and future inflation rate are given by,
-\begin{equation}\label{eq:xe}
-	x_{t+1|t}^e = \lambda x_t + (1-\lambda) E_t x_{t+1},
-\end{equation}
-\begin{equation}\label{eq:pie}
-	\pi_{t+1|t}^e = \lambda \pi_t + (1-\lambda) E_t \pi_{t+1},
-\end{equation}
-where $x_{t+1|t}^e$ denotes expectation made at time $t$ regarding the value $x$ in time $t+1$. The IS and Phillips curve equations are then given by,
+There are three key equations of interest. The first is the dynamic IS curve that may be derived from the consumer's problem. Once the model has been log-linearized, it states that the current output gap depends on expectations of the output gap next period, and is negatively related to the difference between the ex-ante real interest rate and the natural rate of interest. This is given by the equation:
 \begin{equation}\label{eq:ISe}
-	x_t = x_{t+1|t}^e - \frac{1}{\sigma} \left( r_t - \pi_{t+1|t}^e \right) + \xi_t^{x}
+	x_t = x_{t+1|t}^e - \frac{1}{\sigma} \left( r_t - \pi_{t+1|t}^e -r^n_t \right) + \xi_t^{x}
 \end{equation}
+where in period $t$, $x_t$ denotes the output gap (given by the difference between the log of output and its natural rate), $r_t$ denotes the nominal interest rate, $\pi_t$ is the inflation rate and $r^n_t$ is the natural rate of interest. The terms $x_{t+1|t}^e$ and $\pi_{t+1|t}^e$ represent the period $t$ expectations of private sector agents on next period's output gap and inflation respectively. The preference parameter, $\sigma$ is inversely related to consumers' intertemporal elasticity of substitution and the shock term, $\xi_t^x$, represents a demand shock.
+
+The second key equation is the New Keynesian Phillips Curve (NKPC), which states that inflation depends on the expectation of next period's inflation, and the output gap.
 \begin{equation}\label{eq:PhillipsCurvee}
 	\pi_t = \beta \pi_{t+1|t}^e + \kappa x_t + \xi_t^{\pi}
 \end{equation}
-When $\lambda=0$, $x_{t+1|t}^e = E_t x_{t+1}$, and expectations are fully rational. When $\lambda$ is greater than zero, this implies that a cost shock can have a larger impact on inflation. Only a fraction of agents in the economy use the information that inflation will come back down once the central bank responds with an increase in the interest rate. This effect can be even larger when the central bank employs average inflation targeting, allowing inflation to remain above its target from some length of time.
+where the preference parameter $\beta$ is the discount factor, $\kappa$ is a reduced form parameter that is inversely related to the degree of price stickiness, and the shock term, $\xi_t^\pi$, represents a possible cost shock, or stagflationary shock.
 
-We will suppose that demand shocks and cost shocks have persistence. Let the innovations $\xi_t^x$ and $\xi_t^\pi$ evolve according to,
+The third relationship is an interest rate rule that describes the conduct of monetary policy and how nominal interest rates are determined: 
+\begin{equation}\label{eq:TaylorRule}
+	r_t = \rho_r r_{t-1} + (1-\rho_r) \left( \psi_\pi \pi_t + \psi_x x_t \right) + \epsilon_t^{r}
+\end{equation}
+where $\rho_r$ represents the parameter that central banks use to smooth the path of interest rates. The parameters $\psi_\pi$ and $\psi_x$ represent the weight that the central bank places on current inflation relative to the output gap respectively. The shock term, $\epsilon_t^r$, denotes a monetary policy shock.
+
+Regarding the IS and the Phillips curve equations, we will consider the possibility that a fraction $\lambda \in [0,1)$ of agents form naive expectations, so that on the aggregate, the time $t$ expectations for the future output gap and future inflation rate are given by,
+\begin{equation}\label{eq:xe}
+	x_{t+1|t}^e = \lambda x_t + (1-\lambda) \E_t x_{t+1},
+\end{equation}
+\begin{equation}\label{eq:pie}
+	\pi_{t+1|t}^e = \lambda \pi_t + (1-\lambda) \E_t \pi_{t+1},
+\end{equation}
+where $x_{t+1|t}^e$ denotes expectation made at time $t$ regarding the value $x$ in time $t+1$. When $\lambda=0$, both $x_{t+1|t}^e = \E_t x_{t+1}$ and $\pi_{t+1|t}^e=\E_t \pi_{t+1}$. In this case, expectations are fully rational. When $\lambda$ is greater than zero, this implies that a cost shock can have a larger impact on inflation. Only a fraction of agents in the economy use the information that inflation will come back down once the central bank responds with an increase in the interest rate. This effect can be even larger when the central bank employs average inflation targeting, allowing inflation to remain above its target from some length of time.
+
+Finally, in the baseline model, we assume that demand shocks and cost shocks have persistence. The innovations $\xi_t^x$ and $\xi_t^\pi$ evolve according to:
 \begin{equation}\label{eq:demandshock}
 	\xi_t^x = \rho_x \xi_{t-1}^x + \epsilon_t^x,
 \end{equation}
@@ -151,25 +146,33 @@ where $\rho_x\in [0,1)$ and $\rho_\pi \in [0,1)$ capture the persistence of the 
 
 \subsection{Average Inflation Targeting}
 
-Rather than targeting the current inflation rate, we consider the following average inflation targeting Taylor rule,
+Under average inflation targeting (AIT), than central bank targets an (potentially weighted) average value of inflation instead of the current inflation rate. The monetary policy rule under AIT may be described as: 
 \begin{equation}\label{eq:TaylorRuleAIT}
 	r_t = \rho_r r_{t-1} + (1-\rho_r) \left( \psi_\pi \pi_t^A + \psi_x x_t \right) + \xi_t^{r},
 \end{equation}
-which is simply equation (\ref{eq:TaylorRule}) with $\pi_t^A$ in substitution for $\pi_t$, and $\pi_t^A$ is equal to some average inflation rate over some window time. The U.S. Federal Reserve has not been specific on how long such a window may be, and whether that window is forward-looking, backward-looking, or both. For example, the average inflation target could possibly look like,
+which is simply equation (\ref{eq:TaylorRule}) with $\pi_t^A$ in substitution for $\pi_t$, and $\pi_t^A$ is equal to some average inflation rate over some period of time. The U.S. Federal Reserve has not been specific on how long such a window may be, and whether that window is forward-looking, backward-looking, or both. For example, the average inflation target could possibly look like:
 \begin{equation}\label{eq:ait}
-	\pi_t^A = \frac{m+1}{m+n+1}\sum_{j=0}^{m} \pi_{t-j} + \frac{n}{m+n+1}\sum_{j=1}^{n} E_t \pi_{t+j},
+	\pi_t^A = \frac{m+1}{m+n+1}\sum_{j=0}^{m} \pi_{t-j} + \frac{n}{m+n+1}\sum_{j=1}^{n} \E_t \pi_{t+j},
 \end{equation}
-where the window looks backward $m$ periods, includes the current period (hence the $m+1$), and looks forward $n$ periods.  This arithmetic mean gives an equal weight to all observations within the window. Note that forward-looking expectation uses the rational expectations operator. We will assume the central bank operates using rational expectations. It is both mathematically convenient and plausible to consider that the target be a weighted average, where observations closer to the current period are weighted more heavily than observations in the farther future or farther past. Consider the following backward-looking weighted average inflation,
+where the window looks backward $m$ periods, includes the current period (hence the $m+1$), and looks forward $n$ periods.  This arithmetic mean gives an equal weight to all observations within the window. We assume the central bank has rational expectations and that forward-looking expectation uses the rational expectations operator. It is both mathematically convenient and plausible to consider that the target be a weighted average, where observations closer to the current period are weighted more heavily than observations in the farther future or farther past. 
+
+We consider that the target average inflation rate, $\pi_t^A$, which appears in the monetary policy rule in equation (\ref{eq:TaylorRuleAIT}), is the following weighted average of the backward-looking and the forward-looking average,
+\begin{equation}
+	\pi_t^A = \gamma \pi_t^B + (1-\gamma) \pi_t^F,
+\end{equation}
+where $\gamma \in [0,1]$ is the relative weight given to past inflation versus expected future inflation.
+
+Here $\pi_t^B$ is a measure of the backward-looking weighted average inflation described by:
 \begin{equation}\label{eq:backward}
 	\pi_t^B = \delta_B \pi_t + (1-\delta_B) \pi_{t-1}^B,
 \end{equation}
-where $\pi_t^B$ is a measure of weighted average inflation, with the weight $\delta_B \in (0,1)$ given to the most recent observation. Note that the current value for inflation, $\pi_t$, is included in this "backward-looking" window. The backward-looking average can be thought of everything in the time $t$ information set for the central bank. Repeated substitution reveals $\pi_t^B$ is a weighted average with weights declining geometrically with time,
+where the weight $\delta_B \in (0,1)$ given to the most recent observation. Note that the current value for inflation, $\pi_t$, is included in this ``backward-looking" window. The backward-looking average can be thought of everything in the time $t$ information set for the central bank. Repeated substitution reveals $\pi_t^B$ is a weighted average with weights declining geometrically with time,
 \begin{equation}\label{eq:backward_all}
 	\pi_t^B = \delta_B \sum_{j=0}^{\infty} (1-\delta_B)^j \pi_{t-j},
 \end{equation}
 where the weight on an observation $j$ periods in the past is given by, $\delta_B (1-\delta_B)^j$. The weights sum to one and converge to zero as observations are more distant. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting. With an equally-weighted mean over a finite window of size $(m+1)$, the weight on every observation is $1/(m+1)$. The weight of $\delta_B$ could then be though of as approximating the monetary policy behavior of using a finite window of length $1 / \delta_B$ periods.
 
-Similarly, suppose a forward-looking expected average future inflation is given by,
+Similarly, $\pi_t^F$ is a forward-looking expected average of future inflation given by:
 \begin{equation}\label{eq:forward}
 	\pi_t^F = \delta_F E_t \pi_{t+1} + (1-\delta_F) E_t \pi_{t+1}^F,
 \end{equation}
@@ -181,13 +184,9 @@ Repeated substitution of equation (\ref{eq:forward}) leads to the following expr
 \end{equation}
 which reveals the weight given to an expected inflation rate $j$ periods in the future is equal to $\delta_F (1-\delta_F)^{j-1}$. The weights decline geometrically with the distance into the future, converging to zero and all summing to one.
 
-Suppose that the target average inflation rate, $\pi_t^A$, which appears in the Taylor rule in equation (\ref{eq:TaylorRuleAIT}), is the following weighted average of the backward-looking and the forward-looking average,
-\begin{equation}
-	\pi_t^A = \gamma \pi_t^B + (1-\gamma) \pi_t^F,
-\end{equation}
-where $\gamma \in [0,1]$ is the relative weight given to past inflation versus expected future inflation.
 
-The continuous nature of the forward-looking and backward-looking weighted averages are both mathematically convenient and arguably more realistic than rolling-window arithmetic mean. Equations (\ref{eq:backward}) and (\ref{eq:forward}) are difference equations over a single period. The parameters, $\delta_B$ and $\delta_F$ can be varies on a continuous scale, instead of making discrete choices for rolling window lengths. A standard Taylor rule, like equation (\ref{eq:TaylorRule}), is also a special case of the larger model, with $\gamma=1.0$ and $\delta_B=1.0$. By decreasing these parameters below 1.0, we can think of larger deviations from the standard Taylor rule.
+
+The continuous nature of the forward-looking and backward-looking weighted averages are both mathematically convenient and arguably more realistic than rolling-window arithmetic mean. Equations (\ref{eq:backward}) and (\ref{eq:forward}) are difference equations over a single period. The parameters, $\delta_B$ and $\delta_F$ can be varies on a continuous scale, instead of making discrete choices for rolling window lengths. A standard Taylor-type rule, like equation (\ref{eq:TaylorRule}), is also a special case of the larger model, with $\gamma=1.0$ and $\delta_B=1.0$. By decreasing these parameters below 1.0, we can think of larger deviations from the standard monetary policy rule.
 
 It may be more realistic to suppose that the central bank puts more weight on more recent past observations than on farther observations. It may be more realistic to suppose too that the central bank puts more weight on future observations in the near future, where inflation forecasts may be more reliable, than on expectations for the farther future.
 
@@ -197,12 +196,14 @@ The full model is given by the following ten equations: IS curve, equation (\ref
 
 We calibrate the model using the parameters in Table \ref{tb:parms}. In the next section we consider alternative calibrations for the average inflation targeting parameters and the degree of rational versus naive expectations. Table \ref{tb:parmsvary} shows variations on those parameters that are considered. For a given parameterization, we solve the linear model using the method in \cite{sims_solving_2002}.
 
-\begin{table}\caption{Parameter Calibrations}\label{tb:parms}
+\begin{table}[htp]
+	\caption{Parameter Calibrations}\label{tb:parms}
 	\begin{center}
 		\begin{tabular}{lcr} \hline
 			Description & Parameter & Value \\ \hline
 			Discount rate (Quarterly) & $\beta$ & 0.99 \\
 			Inverse intertemporal elasticity & $\sigma$ & 2.0 \\
+			Natural rate of interest & $r^n$ & 0.02 \\
 			Phillips curve coefficient & $\kappa$ & 0.1 \\
 			Monetary policy persistence & $\rho_r$ & 0.7 \\
 			Monetary policy response to average inflation & $\psi_\pi$ & 1.5 \\
