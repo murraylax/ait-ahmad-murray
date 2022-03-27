@@ -42,13 +42,12 @@ parameters  beta, sigma, gamma, kappa, lambda, rhox, rhop, rhor, psix, psip, del
              
             % Key AIT Parameters loaded by parameterfile1
             
-            % deltab = 0.25;      % Weight on Backwards looking inflation term 
+            % deltab = 0.25;      % Default weight on Backwards looking inflation term 
             set_param_value('deltab',modparams(1));
-            % deltaf = 0.25;      % Weight on Forwards looking inflation term
-            set_param_value('deltaf',modparams(2));
-            % gamma = 0;          % AIT weight on past inflation
+            set_param_value('deltaf',modparams(2));  % Weight on Forwards looking inflation term
+            % gamma = 0;          % Default AIT weight on past inflation
             set_param_value('gamma',modparams(3));
-            % lambda = 0;         % Weight on naive expectations/Minnesota Prior
+            % lambda = 0;         % Default weight on naive expectations/Minnesota Prior
             set_param_value('lambda',modparams(4));
             
             % Simulation parameters
@@ -123,10 +122,3 @@ check;
 % model_info;
 % model_diagnostics;
 
-% Value of Shock put in directly in previous Dynare version.
-% Sigma_e = [0.000049];
-     %     epszt                         
-
-% Run Stochastic Simulation
-% ==============================
-% stoch_simul(irf=20,periods = 5500, drop=500, hp_filter=1600,ORDER=1) x, infl, exg, exinfl, r;
