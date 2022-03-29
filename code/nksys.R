@@ -75,7 +75,7 @@ eq_xe_alt <- 13
 eq_pie_alt <- 14
 neq <- 14
 
-nksys <- function(gamma, deltaB, deltaF, lambda)
+nksys <- function(gamma, deltaB, deltaF, lambda, psi_pi=1.5)
 {
   # Setup matrices
   Gamma0 <- matrix(nrow=neq, ncol=nvar, data=0)
