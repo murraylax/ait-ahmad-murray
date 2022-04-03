@@ -1,58 +1,57 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.1.5)  18 FEB 2022 09:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.6)  8 MAR 2022 17:44
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**ait.tex
-(./ait.tex
+**./ait.tex
+(ait.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2021-11-22>
-(/usr/share/texmf-dist/tex/latex/base/article.cls
+L3 programming layer <2022-01-21>
+(C:\Workprogs\MikTeX\tex/latex/base\article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/share/texmf-dist/tex/latex/base/size12.clo
+(C:\Workprogs\MikTeX\tex/latex/base\size12.clo
 File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count183
-\c@section=\count184
-\c@subsection=\count185
-\c@subsubsection=\count186
-\c@paragraph=\count187
-\c@subparagraph=\count188
-\c@figure=\count189
-\c@table=\count190
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+(C:\Workprogs\MikTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
-(/usr/share/texmf-dist/tex/latex/tools/calc.sty
+(C:\Workprogs\MikTeX\tex/latex/tools\calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count191
-\calc@Bcount=\count192
+\calc@Acount=\count193
+\calc@Bcount=\count194
 \calc@Adimen=\dimen139
 \calc@Bdimen=\dimen140
 \calc@Askip=\skip49
 \calc@Bskip=\skip50
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count193
+\calc@Ccount=\count195
 \calc@Cskip=\skip51
 )
-(/usr/share/texmf-dist/tex/latex/setspace/setspace.sty
+(C:\Workprogs\MikTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-(/usr/share/texmf-dist/tex/latex/tools/multicol.sty
+(C:\Workprogs\MikTeX\tex/latex/tools\multicol.sty
 Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
-\c@tracingmulticols=\count194
+\c@tracingmulticols=\count196
 \mult@box=\box50
 \multicol@leftmargin=\dimen141
-\c@unbalance=\count195
-\c@collectmore=\count196
-\doublecol@number=\count197
-\multicoltolerance=\count198
-\multicolpretolerance=\count199
+\c@unbalance=\count197
+\c@collectmore=\count198
+\doublecol@number=\count199
+\multicoltolerance=\count266
+\multicolpretolerance=\count267
 \full@width=\dimen142
 \page@free=\dimen143
 \premulticols=\dimen144
@@ -102,17 +101,17 @@ Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
 \@tempa=\box90
 \@tempa=\box91
 \@tempa=\box92
-\c@minrows=\count266
-\c@columnbadness=\count267
-\c@finalcolumnbadness=\count268
+\c@minrows=\count268
+\c@columnbadness=\count269
+\c@finalcolumnbadness=\count270
 \last@try=\dimen147
 \multicolovershoot=\dimen148
 \multicolundershoot=\dimen149
 \mult@nat@firstbox=\box93
 \colbreak@box=\box94
-\mc@col@check@num=\count269
+\mc@col@check@num=\count271
 )
-(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyheadings.sty
+(C:\Workprogs\MikTeX\tex/latex/fancyhdr\fancyheadings.sty
 Package: fancyheadings 2021/01/28 v4.0.1 Legacy package to call fancyhdr
 
 
@@ -128,7 +127,7 @@ Package fancyheadings Warning: Please stop using fancyheadings!
 (fancyheadings)                parameters, but normal macros (to be changed
 (fancyheadings)                with \renewcommand rather than \setlength)..
 
-(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+(C:\Workprogs\MikTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
 rs
 \f@nch@headwidth=\skip54
@@ -141,80 +140,80 @@ rs
 \f@nch@O@olf=\skip61
 \f@nch@O@orf=\skip62
 ))
-(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+(C:\Workprogs\MikTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+(C:\Workprogs\MikTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+(C:\Workprogs\MikTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+(C:\Workprogs\MikTeX\tex/latex/graphics\trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(C:\Workprogs\MikTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
 
-(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+(C:\Workprogs\MikTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen150
 \Gin@req@width=\dimen151
 )
-(/usr/share/texmf-dist/tex/latex/graphics/color.sty
+(C:\Workprogs\MikTeX\tex/latex/graphics\color.sty
 Package: color 2021/12/07 v1.3c Standard LaTeX Color (DPC)
 
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+(C:\Workprogs\MikTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
 )
-(/usr/share/texmf-dist/tex/latex/graphics/rotating.sty
+(C:\Workprogs\MikTeX\tex/latex/graphics\rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 
-(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+(C:\Workprogs\MikTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count270
+\c@r@tfl@t=\count272
 \rotFPtop=\skip63
 \rotFPbot=\skip64
 \rot@float@box=\box95
 \rot@mess@toks=\toks17
 )
-(/usr/share/texmf-dist/tex/latex/harvard/harvard.sty
+(C:\Workprogs\MikTeX\tex/latex/harvard\harvard.sty
 Package: harvard 
 )
-(/usr/share/texmf-dist/tex/latex/economic/aer.sty
+(C:\Workprogs\MikTeX\tex/latex/economic\aer.sty
 Document style option `aer.sty' (29 May 1993) for LaTeX 2.09.)
-(/usr/share/texmf-dist/tex/latex/economic/aertt.sty
+(C:\Workprogs\MikTeX\tex/latex/economic\aertt.sty
 Document style option `aertt.sty' (29 May 1993) for LaTeX 2.09.
-(/usr/share/texmf-dist/tex/generic/ulem/ulem.sty
+(C:\Workprogs\MikTeX\tex/latex/ulem\ulem.sty
 \UL@box=\box96
 \UL@hyphenbox=\box97
 \UL@skip=\skip65
 \UL@hook=\toks18
 \UL@height=\dimen152
-\UL@pe=\count271
+\UL@pe=\count273
 \UL@pixel=\dimen153
 \ULC@box=\box98
 Package: ulem 2019/11/18
 \ULdepth=\dimen154
 ))
-(/usr/share/texmf-dist/tex/latex/tools/verbatim.sty
+(C:\Workprogs\MikTeX\tex/latex/tools\verbatim.sty
 Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks19
 \verbatim@line=\toks20
 \verbatim@in@stream=\read2
 )
-(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count272
+(C:\Workprogs\MikTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count274
 \l__pdf_internal_box=\box99
-) (./ait.aux)
+) (ait.aux)
 \openout1 = `ait.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
@@ -232,27 +231,26 @@ LaTeX Font Info:    ... okay on input line 73.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
 LaTeX Font Info:    ... okay on input line 73.
 
-(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(C:\Workprogs\MikTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count273
+\scratchcounter=\count275
 \scratchdimen=\dimen155
 \scratchbox=\box100
-\nofMPsegments=\count274
-\nofMParguments=\count275
+\nofMPsegments=\count276
+\nofMParguments=\count277
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count276
+\MPscratchCnt=\count278
 \MPscratchDim=\dimen156
-\MPnumerator=\count277
-\makeMPintoPDFobject=\count278
+\MPnumerator=\count279
+\makeMPintoPDFobject=\count280
 \everyMPtoPDFconversion=\toks22
-) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+) (C:\Workprogs\MikTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 
-(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
+(C:\Workprogs\MikTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <14.4> on input line 89.
@@ -263,7 +261,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
 9.
 
-(/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
+(C:\Workprogs\MikTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 Underfull \hbox (badness 10000) in paragraph at lines 93--94
@@ -272,7 +270,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 93--94
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{C:/Users/ahmady/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 107.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -324,7 +322,7 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-14.49998pt}.
 
-[5] (./ait.bbl
+[5] (ait.bbl
 
 Package fancyhdr Warning: \headheight is too small (0.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -342,38 +340,41 @@ Package fancyhdr Warning: \headheight is too small (0.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-14.49998pt}.
 
-[7] (./ait.aux) ) 
+[7] (ait.aux) ) 
 Here is how much of TeX's memory you used:
- 2593 strings out of 478353
- 40653 string characters out of 5854636
- 343504 words of memory out of 5000000
- 20687 multiletter control sequences out of 15000+600000
- 418714 words of font info for 57 fonts, out of 8000000 for 9000
+ 2595 strings out of 478593
+ 40748 string characters out of 2856327
+ 336105 words of memory out of 3000000
+ 20736 multiletter control sequences out of 15000+600000
+ 484543 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,12n,69p,1211b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.en
-c}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/s
-hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/p
-ublic/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/
-sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></
-usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf
--dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf-dist/fonts/typ
-e1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-su
-per/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pf
-b></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/t
-exmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf-dist/fonts
-/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/c
-m-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti120
-0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ait.pdf (8 pages, 323589 bytes).
+ 55i,12n,69p,1213b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
+ec/dpi600\ecti1200.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jk
+nappen/ec/dpi600\ecbx1200.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/lj
+four/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\font
+s/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\ahmady\AppData\Local\MiKT
+eX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\ahmady\AppData\Loc
+al\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\ahmady\AppD
+ata\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\ahma
+dy\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Use
+rs\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm0700.pk> 
+<C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti10
+95.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecrm1095.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
+/dpi600\ecbx1095.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\tcrm1000.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\ahmady\AppData\Local\MiKTeX\fonts/
+pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><C:/Workprogs/MikTeX/fonts/type1/publi
+c/amsfonts/cm/cmex10.pfb><C:/Workprogs/MikTeX/fonts/type1/public/amsfonts/cm/cm
+mi12.pfb><C:/Workprogs/MikTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Work
+progs/MikTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Workprogs/MikTeX/font
+s/type1/public/amsfonts/cm/cmr8.pfb><C:/Workprogs/MikTeX/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Workprogs/MikTeX/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb>
+Output written on ait.pdf (8 pages, 201312 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 87 compressed objects within 1 object stream
+ 415 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
