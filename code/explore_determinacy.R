@@ -68,9 +68,14 @@ ggplot(all.df, aes(x=gamma, y=deltaF, color=solution)) +
   scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
   theme_bw() +
   theme(text=element_text(size=18)) +
-  labs(title="Regions of Determinacy for Forward Windows", x="gamma", y="delta_F", col="") +
+  labs(title="Regions of Determinacy over Backward-Looking Weight and\nLength of Forward-Looking Windows",
+       x=TeX("Backward-Window Weight: $\\gamma$"), y=TeX("Forward Weight: $\\delta_F$"),
+       col="") +
   coord_cartesian(ylim=c(0,1)) +
-  guides(color = guide_legend(override.aes = list(size=10, alpha=1)))
+  guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
+  gg.gf
+show(gg.gf)
+ggsave(filename="./gamma_deltaF.png", plot=gg.gf, width=10, height=8)
 
 
 
@@ -115,10 +120,15 @@ ggplot(all.df, aes(x=lambda, y=deltaF, color=solution)) +
   scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
   theme_bw() +
   theme(text=element_text(size=18)) +
-  labs(title="Regions of Determinacy for Forward Windows", x="lambda", y="delta_F", col="") +
+  labs(title="Regions of Determinacy for Forward Windows with Naive Expectations", 
+       x=TeX("Proportion of Naive Expectations: $\\lambda$"), y=TeX("Forward Weight: $\\delta_F$"),
+       x="lambda", y="delta_F", 
+       col="") +
   coord_cartesian(ylim=c(0,1)) +
-  guides(color = guide_legend(override.aes = list(size=10, alpha=1)))
-
+  guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
+  gg.lf
+show(gg.lf)
+ggsave(filename="./lambda_deltaF.png", plot=gg.lf, width=10, height=8)
 
 
 # Search over psi_pi
@@ -132,9 +142,9 @@ nsim_deltaF <- 301
 deltaFsim <- seq(0.0,1.0, by=1/(nsim_deltaF-1))
 
 nsim_psipi <- 601
-minval <- 0.0
-maxval <- 2.0
-psipiSim <- seq(0.0,2.0, by=(maxval-minval)/(nsim_psipi-1))
+minval <- 0.9
+maxval <- 3.0
+psipiSim <- seq(minval, maxval, by=(maxval-minval)/(nsim_psipi-1))
 
 all.df <- tibble(deltaF=as.double(NA), 
                  psi_pi=as.double(NA),
@@ -166,8 +176,14 @@ all.df %>%
   scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
   theme_bw() +
   theme(text=element_text(size=18)) +
-  labs(title="Regions of Determinacy for Forward Windows", x="psi_pi", y="delta_F", col="") +
-  guides(color = guide_legend(override.aes = list(size=10, alpha=1)))
+  theme(legend.position = "bottom") +
+  labs(title="Regions of Determinacy over Forward Windows and\n Monetary Policy Response to Inflation", 
+       x=TeX("Taylor Rule Coefficient on Inflation: $\\psi_\\pi$"), y=TeX("Forward Weight: $\\delta_F$"),
+       col="") +
+  guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
+  gg.pif
+show(gg.pif)
+ggsave(filename="./pi_deltaF.png", plot=gg.pif, width=10, height=8)
 
 
 # Search over deltaB
@@ -214,6 +230,7 @@ all.df %>%
   scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
   theme_bw() +
   theme(text=element_text(size=18)) +
+  theme(legend.position = "bottom") +
   labs(title="Regions of Determinacy for Forward & Backward Windows", x=TeX("Backward Weight: $\\delta_B$"), y=TeX("Forward Weight: $\\delta_F$"), col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) +
   theme(legend.position = "bottom") ->
