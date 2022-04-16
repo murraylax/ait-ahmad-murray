@@ -294,3 +294,4 @@ TSWLatexianTemp*
 
 # xwatermark package
 *.xwm
+.Rproj.user

@@ -91,7 +91,7 @@ sigma_r <- 0.25 # Shock to monetary policy (25 basis points)
 rho_x <- 0.7 # Persistence in the demand shock
 rho_pi <- 0.7 # Persistence in the supply shock
 
-nkmodel <- function(gamma, deltaB, deltaF)
+nksys <- function(gamma, deltaB, deltaF, lambda)
 {
   # Setup matrices
   Gamma0 <- matrix(nrow=neq, ncol=nvar, data=0)
@@ -189,34 +189,68 @@ nkmodel <- function(gamma, deltaB, deltaF)
   Gamma0[eq_pie_alt, i_var_pi] <- -1.0*lambda
   Gamma0[eq_pie_alt, i_var_pie] <- -1.0*(1.0 - lambda)
   
-  # Standard Deviation of Shocks
-  shocks_stdev <- vector(length=nshocks)
-  shocks_stdev[i_shock_x] <- sigma_x
-  shocks_stdev[i_shock_pi] <- sigma_pi
-  shocks_stdev[i_shock_r] <- sigma_r
+  # Structural shocks covariance matrix
+  Sigma[i_shock_x, i_shock_x] = sigma_x * sigma_x
+  Sigma[i_shock_pi, i_shock_pi] = sigma_pi * sigma_pi
+  Sigma[i_shock_r, i_shock_r] = sigma_r * sigma_r
   
+  # Standard Deviation of Shocks
+  shocks_stddev <- sqrt(diag(Sigma))
+  
+  nksys.list <- list(Gamma0=Gamma0, Gamma1=Gamma1, C=C, Psi=Psi, Pi=Pi, Sigma=Sigma, shocks_stddev=shocks_stddev)
+  return(nksys.list)
+}
+
+check_nksys <- function(nksys.list) {
+  n <- nrow(nksys.list$Gamma0)
+  nexp <- ncol(nksys.list$Pi)
+  
+  A <- matrix(as.complex(nksys.list$Gamma0), nrow=n, ncol=n)
+  B <- matrix(as.complex(nksys.list$Gamma1), nrow=n, ncol=n)
+
+  nkqz <- qz(A,B)
+  eigv <- nkqz$BETA / nkqz$ALPHA
+  eigv <- abs(Mod(eigv))
+
+  nexplosive <- sum(abs(eigv)>=1.0)
+  explosive_eigs <- abs(eigv)>=1.0
+  nkqz.ord <- qz(A,B, !explosive_eigs)
+  
+  # Test it!
+  #eigv <- nkqz.ord$BETA / nkqz.ord$ALPHA
+  #eigv <- abs(Mod(eigv))
+  #(eigv)
+  
+  pi_tilde <- t(nkqz.ord$Q) %*% nksys.list$Pi
+  pi_tilde_2 <- pi_tilde[(n-nexplosive+1):n, ]
+  rnk <- rankMatrix(pi_tilde_2)[1]
+
+  retval <- "Error"
+  if(rnk<nexp) retval <- "Indeterminacy"
+  if(rnk==nexp) retval <- "Unique"
+  if(rnk>nexp) retval <- "No solution"
+  return(retval)
+}
+
+nkirf <- function(nksys.list, nirf=12) {
   # Solve System
   nksys <- new(gensys)
   nksys$build(Gamma0, Gamma1, C, Psi, Pi)
   nksys$solve()
-  nksys$G_sol
-  nksys$impact_sol
+  #nksys$G_sol
+  #nksys$impact_sol
   
-  # Check for indeterminacy
-  bIndeterminacy <- FALSE
-  nkqz <- qz(Gamma0, Gamma1)
-  eigv <- diag(nkqz$T) / diag(nkqz$S)
-  if(sum(eigv>=1) < nexp) {
-    bIndeterminacy <- TRUE
-  } 
-  
-  nirf <- 12
   irf.ts <- gensys_irf_ts(nksys, shocks=shocks_stdev, nirf=nirf, varnames=varnames, shocknames=shocknames)
-  
-  irf.ts$bIndeterminacy <- bIndeterminacy
-  
   return(irf.ts)
 }
+
+
+# Test out the model
+gamma = 1.0
+deltaB = 0.25
+deltaF = 0.8
+lambda = 0.9
+nksys.list <- nksys(gamma,deltaB,deltaF,lambda)
 
 
 # Put all the data here
@@ -226,8 +260,6 @@ irf_all.df <- tibble()
 deltavals <- c(0.25, 0.5, 1)
 deltavals <- 0.125
 lambda <- 0.0 # Weight of non-rational expectation on naive forecast (=0 is perfectly rational expectations)
-
-
 
 # Backward looking windows
 gamma <- 1.0 # Backward looking weight
