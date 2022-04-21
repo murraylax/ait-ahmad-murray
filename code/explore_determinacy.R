@@ -34,13 +34,13 @@ deltaB = 1.0 # Weight on most recent observation (current value)
 #solution <- check_nksys(nksys.list)
 #(solution)
 
-nsim_deltaF <- 301
+nsim_deltaF <- 201
 deltaFsim <- seq(0.0,1.0, by=1/(nsim_deltaF-1))
 
-nsim_gamma <- 301
+nsim_gamma <- 201
 gammaSim <- seq(0.0,1.0, by=1/(nsim_gamma-1))
   
-all.df <- tibble(deltaF=as.double(NA), 
+gamma_deltaF.df <- tibble(deltaF=as.double(NA), 
                  gamma=as.double(NA),
                  solution=as.character(NA),
                  unique=as.logical(NA), .rows=nsim_gamma*nsim_deltaF)
@@ -52,18 +52,18 @@ for(deltaF in deltaFsim) {
   for(gamma in gammaSim) {
     s <- s + 1
     nksys.list <- nksys(gamma,deltaB,deltaF,lambda)
-    solution <- check_nksys(nksys.list)
-    all.df$gamma[s] <- gamma
-    all.df$deltaF[s] <- deltaF
-    all.df$solution[s] <- solution
-    all.df$unique[s] <- solution=="Unique"
+    solution <- checksys(nksys.list)
+    gamma_deltaF.df$gamma[s] <- gamma
+    gamma_deltaF.df$deltaF[s] <- deltaF
+    gamma_deltaF.df$solution[s] <- solution
+    gamma_deltaF.df$unique[s] <- solution=="Unique"
   }
 }
 
 # Plot determinacy / indeterminacy region
 
-ggplot(all.df, aes(x=gamma, y=deltaF, color=solution)) +
-  geom_point(alpha=0.3,stroke=0, shape=19, size=2) +
+ggplot(gamma_deltaF.df, aes(x=gamma, y=deltaF, color=solution)) +
+  geom_point(alpha=0.7, stroke=0, shape=18, size=5) +
   scale_y_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
   scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
   theme_bw() +

@@ -2,7 +2,7 @@ library(tidyverse)
 library(BMR)
 library(QZ)
 
-source("gensys_irf.R")
+source("gensys.R")
 #devtools::install_github("kthohr/BMR")
 
 # Put New Keynesian into Sims's GenSys form: Gamma_O y_t = C + Gamma_1 y_{t-1} + \Psi \epsilon_t + \Pi \eta_t
@@ -185,48 +185,12 @@ nksys <- function(gamma, deltaB, deltaF, lambda, psi_pi=1.5)
   return(nksys.list)
 }
 
-check_nksys <- function(nksys.list) {
-  n <- nrow(nksys.list$Gamma0)
-  nexp <- ncol(nksys.list$Pi)
-  
-  A <- matrix(as.complex(nksys.list$Gamma0), nrow=n, ncol=n)
-  B <- matrix(as.complex(nksys.list$Gamma1), nrow=n, ncol=n)
-  
-  nkqz <- qz(A,B)
-  eigv <- nkqz$BETA / nkqz$ALPHA
-  eigv <- abs(Mod(eigv))
-  
-  nexplosive <- sum(abs(eigv)>=1.0)
-  explosive_eigs <- abs(eigv)>=1.0
-  nkqz.ord <- qz(A,B, !explosive_eigs)
-  
-  # Test it!
-  #eigv <- nkqz.ord$BETA / nkqz.ord$ALPHA
-  #eigv <- abs(Mod(eigv))
-  #(eigv)
-  
-  retval <- "Error"
-  if(nexplosive<nexp) {
-    return("Indeterminacy")
-  }
-  
-  pi_tilde <- t(nkqz.ord$Q) %*% nksys.list$Pi
-  pi_tilde_2 <- pi_tilde[(n-nexplosive+1):n, ]
-  rnk <- rankMatrix(pi_tilde_2)[1]
-  
-  if(rnk<nexp) retval <- "Indeterminacy"
-  if(rnk==nexp) retval <- "Unique"
-  if(rnk>nexp) retval <- "No solution"
-  return(retval)
-}
 
 nkirf <- function(nksys.list, nirf=12) {
   # Solve System
   nksys <- new(gensys)
   nksys$build(Gamma0, Gamma1, C, Psi, Pi)
   nksys$solve()
-  #nksys$G_sol
-  #nksys$impact_sol
   
   irf.ts <- gensys_irf_ts(nksys, shocks=shocks_stdev, nirf=nirf, varnames=varnames, shocknames=shocknames)
   return(irf.ts)
