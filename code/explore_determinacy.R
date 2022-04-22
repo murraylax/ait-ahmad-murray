@@ -1,6 +1,13 @@
 source("nksys.R")
 library(latex2exp)
 
+# Plot parameters
+shape <- 19 # Circle
+size <- 2.5 # Size of the point
+scale_colors <- c("firebrick4", "dodgerblue4")
+alpha <- 0.7
+
+
 # Parameters
 pistar <- (1.0 + 0.02)^{0.25} - 1.0 # 2% steady state annual inflation
 rstar <- (1.0 + 0.04)^{0.25} - 1.0 # 4% steady state annual nominal interest rate
@@ -63,11 +70,12 @@ for(deltaF in deltaFsim) {
 # Plot determinacy / indeterminacy region
 
 ggplot(gamma_deltaF.df, aes(x=gamma, y=deltaF, color=solution)) +
-  geom_point(alpha=0.7, stroke=0, shape=18, size=5) +
+  geom_point(alpha=alpha, stroke=0, shape=shape, size=size) +
   scale_y_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
-  scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
+  scale_color_manual(values=scale_colors) +
   theme_bw() +
   theme(text=element_text(size=18)) +
+  theme(legend.position="bottom") +
   labs(title="Regions of Determinacy over Backward-Looking Weight and\nLength of Forward-Looking Windows",
        x=TeX("Backward-Window Weight: $\\gamma$"), y=TeX("Forward Weight: $\\delta_F$"),
        col="") +
@@ -76,6 +84,10 @@ ggplot(gamma_deltaF.df, aes(x=gamma, y=deltaF, color=solution)) +
   gg.gf
 show(gg.gf)
 ggsave(filename="./gamma_deltaF.png", plot=gg.gf, width=10, height=8)
+
+gg.gf.notitle <- gg.gf + labs(title="") + theme(legend.position = "none")
+show(gg.gf.notitle)
+ggsave(filename="./gamma_deltaF_notitle.png", plot=gg.gf.notitle)
 
 
 
@@ -86,13 +98,17 @@ lambda = 0 # lambda = 0 means fully rational expectations
 gamma = 0.0 # Gamma is backward-looking weight, gamma=0 means purely forward-looking
 deltaB = 1.0 # Weight on most recent observation (current value)
 
-nsim_deltaF <- 301
-deltaFsim <- seq(0.0,1.0, by=1/(nsim_deltaF-1))
+nsim_deltaF <- 201
+delta_low <- 0.01
+delta_high <- 0.99
+deltaFsim <- seq(delta_low, delta_high, by=(delta_high-delta_low)/(nsim_deltaF-1))
 
-nsim_lambda <- 301
-lambdaSim <- seq(0.0,1.0, by=1/(nsim_lambda-1))
+nsim_lambda <- 201
+lambda_low <- 0.01
+lambda_high <- 0.99
+lambdaSim <- seq(lambda_low,labmda_high, by=(lambda_high-lambda_low)/(nsim_lambda-1))
 
-all.df <- tibble(deltaF=as.double(NA), 
+lambda_deltaF.df <- tibble(deltaF=as.double(NA), 
                  lambda=as.double(NA),
                  solution=as.character(NA),
                  unique=as.logical(NA), .rows=nsim_gamma*nsim_deltaF)
@@ -104,22 +120,23 @@ for(deltaF in deltaFsim) {
   for(lambda in lambdaSim) {
     s <- s + 1
     nksys.list <- nksys(gamma,deltaB,deltaF,lambda)
-    solution <- check_nksys(nksys.list)
-    all.df$lambda[s] <- lambda
-    all.df$deltaF[s] <- deltaF
-    all.df$solution[s] <- solution
-    all.df$unique[s] <- solution=="Unique"
+    solution <- checksys(nksys.list)
+    lambda_deltaF.df$lambda[s] <- lambda
+    lambda_deltaF.df$deltaF[s] <- deltaF
+    lambda_deltaF.df$solution[s] <- solution
+    lambda_deltaF.df$unique[s] <- solution=="Unique"
   }
 }
 
 # Plot determinacy / indeterminacy region
 
-ggplot(all.df, aes(x=lambda, y=deltaF, color=solution)) +
-  geom_point(alpha=0.3,stroke=0, shape=19, size=2) +
+ggplot(lambda_deltaF.df, aes(x=lambda, y=deltaF, color=solution)) +
+  geom_point(alpha=alpha, stroke=0, shape=shape, size=size) +
   scale_y_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
-  scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
+  scale_color_manual(values=scale_colors) +
   theme_bw() +
   theme(text=element_text(size=18)) +
+  theme(legend.position="bottom") +
   labs(title="Regions of Determinacy for Forward Windows with Naive Expectations", 
        x=TeX("Proportion of Naive Expectations: $\\lambda$"), y=TeX("Forward Weight: $\\delta_F$"),
        x="lambda", y="delta_F", 
@@ -130,6 +147,11 @@ ggplot(all.df, aes(x=lambda, y=deltaF, color=solution)) +
 show(gg.lf)
 ggsave(filename="./lambda_deltaF.png", plot=gg.lf, width=10, height=8)
 
+gg.lf.notitle <- gg.lf + labs(title="") + theme(legend.position = "none")
+show(gg.lf.notitle)
+ggsave(filename="./lambda_deltaF_notitle.png", plot=gg.lf.notitle)
+
+
 
 # Search over psi_pi
 # Default values
@@ -138,15 +160,17 @@ lambda = 0 # lambda = 0 means fully rational expectations
 gamma = 0.0 # Gamma is backward-looking weight, gamma=0 means purely forward-looking
 deltaB = 1.0 # Weight on most recent observation (current value)
 
-nsim_deltaF <- 301
-deltaFsim <- seq(0.0,1.0, by=1/(nsim_deltaF-1))
+nsim_deltaF <- 201
+minval <- 0.01
+maxval <- 0.99
+deltaFsim <- seq(minval,maxval, by=(maxval-minval)/(nsim_deltaF-1))
 
-nsim_psipi <- 601
+nsim_psipi <- 201
 minval <- 0.9
 maxval <- 3.0
 psipiSim <- seq(minval, maxval, by=(maxval-minval)/(nsim_psipi-1))
 
-all.df <- tibble(deltaF=as.double(NA), 
+psipi_deltaF.df <- tibble(deltaF=as.double(NA), 
                  psi_pi=as.double(NA),
                  solution=as.character(NA),
                  unique=as.logical(NA), .rows=nsim_psipi*nsim_deltaF)
@@ -158,32 +182,34 @@ for(deltaF in deltaFsim) {
   for(psi_pi in psipiSim) {
     s <- s + 1
     nksys.list <- nksys(gamma,deltaB,deltaF,lambda,psi_pi)
-    solution <- check_nksys(nksys.list)
-    all.df$psi_pi[s] <- psi_pi
-    all.df$deltaF[s] <- deltaF
-    all.df$solution[s] <- solution
-    all.df$unique[s] <- solution=="Unique"
+    solution <- checksys(nksys.list)
+    psipi_deltaF.df$psi_pi[s] <- psi_pi
+    psipi_deltaF.df$deltaF[s] <- deltaF
+    psipi_deltaF.df$solution[s] <- solution
+    psipi_deltaF.df$unique[s] <- solution=="Unique"
   }
 }
 
 # Plot determinacy / indeterminacy region
 
-all.df %>%
-  filter(psi_pi>=0.9) %>%
-  ggplot(aes(x=psi_pi, y=deltaF, color=solution)) +
-  geom_point(alpha=0.3,stroke=0, shape=19, size=2) +
+ggplot(psipi_deltaF.df, aes(x=psi_pi, y=deltaF, color=solution)) +
+  geom_point(alpha=alpha, stroke=0, shape=shape, size=size) +
   scale_y_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
-  scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
+  scale_color_manual(values=scale_colors) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position = "bottom") +
   labs(title="Regions of Determinacy over Forward Windows and\n Monetary Policy Response to Inflation", 
-       x=TeX("Taylor Rule Coefficient on Inflation: $\\psi_\\pi$"), y=TeX("Forward Weight: $\\delta_F$"),
+       x=TeX("Taylor Rule Coefficient on Average Inflation: $\\psi_\\pi$"), y=TeX("Forward Weight: $\\delta_F$"),
        col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
   gg.pif
 show(gg.pif)
 ggsave(filename="./pi_deltaF.png", plot=gg.pif, width=10, height=8)
+
+gg.pif.notitle <- gg.pif + labs(title="") + theme(legend.position = "none")
+show(gg.pif.notitle)
+ggsave(filename="./pif_deltaF_notitle.png", plot=gg.pif.notitle)
 
 
 # Search over deltaB
@@ -193,13 +219,17 @@ lambda = 0 # lambda = 0 means fully rational expectations
 gamma = 0.5 # Gamma is backward-looking weight, gamma=0 means purely forward-looking
 deltaB = 0.0 # Weight on most recent observation (current value)
 
-nsim_deltaF <- 300
-deltaFsim <- seq(0.001,0.999, by=1/(nsim_deltaF-1))
+nsim_deltaF <- 201
+minval <- 0.01
+maxval <- 0.99
+deltaFsim <- seq(minval, maxval, by=(maxval-minval)/(nsim_deltaF-1))
 
-nsim_deltaB <- 300
-deltaBsim <- seq(0.001,0.999, by=1/(nsim_deltaB-1))
+nsim_deltaB <- 201
+minval <- 0.01
+maxval <- 0.99
+deltaBsim <- seq(minval, maxval, by=(maxval-minval)/(nsim_deltaB-1))
 
-all.df <- tibble(deltaF=as.double(NA), 
+deltaB_deltaF.df <- tibble(deltaF=as.double(NA), 
                  deltaB=as.double(NA),
                  solution=as.character(NA),
                  unique=as.logical(NA), .rows=nsim_deltaB*nsim_deltaF)
@@ -211,23 +241,21 @@ for(deltaF in deltaFsim) {
   for(deltaB in deltaBsim) {
     s <- s + 1
     nksys.list <- nksys(gamma,deltaB,deltaF,lambda)
-    solution <- check_nksys(nksys.list)
-    all.df$deltaB[s] <- deltaB
-    all.df$deltaF[s] <- deltaF
-    all.df$solution[s] <- solution
-    all.df$unique[s] <- solution=="Unique"
+    solution <- checksys(nksys.list)
+    deltaB_deltaF.df$deltaB[s] <- deltaB
+    deltaB_deltaF.df$deltaF[s] <- deltaF
+    deltaB_deltaF.df$solution[s] <- solution
+    deltaB_deltaF.df$unique[s] <- solution=="Unique"
   }
 }
 
 # Plot determinacy / indeterminacy region
 
-all.df %>%
-  na.omit() %>%
-  ggplot(aes(x=deltaB, y=deltaF, color=solution)) +
-  geom_point(alpha=0.4,stroke=0, shape=19, size=2) +
+ggplot(deltaB_deltaF.df, aes(x=deltaB, y=deltaF, color=solution)) +
+  geom_point(alpha=alpha, stroke=0, shape=shape, size=size) +
   scale_y_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
   scale_x_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
-  scale_color_manual(values=c("firebrick4", "dodgerblue4")) +
+  scale_color_manual(values=scale_colors) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position = "bottom") +
@@ -239,5 +267,49 @@ all.df %>%
 show(gg.bf)
 ggsave(filename="./deltab_deltaF.png", plot=gg.bf, width=10, height=8)
 
+gg.bf.notitle <- gg.bf + labs(title="") + theme(legend.position = "none")
+show(gg.bf.notitle)
+ggsave(filename="./deltab_deltaF_notitle.png", plot=gg.bf.notitle)
 
-  
+## Arrange grid ------------------------------------------------
+library(gridExtra)
+grid.arrange(gg.bf.notitle, gg.gf.notitle, gg.lf.notitle, gg.pif.notitle)
+
+grid.arrange(gg.bf, gg.gf, gg.lf, gg.pif)
+## -------------------------------------------------------------
+
+df <- bind_rows(deltaB_deltaF.df, gamma_deltaF.df)
+df <- bind_rows(df, lambda_deltaF.df)
+df <- bind_rows(df, psipi_deltaF.df)
+
+df.gather <- gather(df, key="Parameter", value="value", c(deltaB, gamma, lambda, psi_pi))
+
+parmlabels <- c(TeX("Panel (A): Backward Weight, $\\delta_B$"), 
+                TeX("Panel (B): Backward Window, $\\gamma$"), 
+                TeX("Panel (C): Proportion Naive, $\\lambda$"), 
+                TeX("Panel (D): Taylor Rule Coef. Avg. Inflation, $\\psi_\\psi$"))
+
+df.gather$Parameter <- as.factor(df.gather$Parameter)
+levels(df.gather$Parameter) <- parmlabels
+
+ggplot(df.gather, aes(x=value, y=deltaF, color=solution)) +
+  geom_point(alpha=alpha, stroke=0, shape=shape, size=size) +
+  scale_y_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
+  scale_x_continuous(label=number_format(accuracy=0.01), breaks=pretty_breaks(n=5)) +
+  scale_color_manual(values=scale_colors) +
+  facet_wrap(~Parameter, nrow=2, scales="free_x", labeller = "label_parsed", strip.position="bottom") +
+  theme_bw() +
+  theme(text=element_text(size=18)) +
+  theme(legend.position = c(0.5,-0.12), legend.direction = "horizontal") +
+  theme(plot.margin = margin(b = 12, t=5, r=5, l=5)) +
+  theme(strip.placement = "outside", strip.background = element_rect(size=0, fill="white")) +
+  labs(title="Regions of Determinacy for Forward-Looking Windows", x="", y=TeX("Forward Weight: $\\delta_F$"), col="") +
+  guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
+  gg.all
+
+show(gg.all)
+ggsave(filename="./determinacy.png", plot=gg.all, width=10, height=8)
+
+gg.all.notitle <- gg.all + labs(title="") + theme(plot.margin=margin(b = 12, t=-10, r=5, l=5))
+show(gg.all.notitle)
+ggsave(filename="./determinacy_notitle.png", plot=gg.all.notitle)
