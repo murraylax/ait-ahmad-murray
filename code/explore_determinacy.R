@@ -18,7 +18,7 @@ sigma <- 1.0/1.38 # Preference parameter: # Schmitt-Grohe and Uribe use 1/2.0, S
 calvo <- 0.66 # Schmitt-Grohe and Uribe use 0.8, Smets and Wouters find 0.66
 kappa <- (1.0-calvo)*(1.0-calvo*beta)/calvo # Phillips curve coefficient
 
-rho_r <- 0.0 # Interest rate smoothing parameter
+rho_r <- 0.7 # Interest rate smoothing parameter
 psi_pi <- 1.50 # Taylor rule response to inflation target
 psi_x <- 0.5 # Taylor rule response to output gap
 
@@ -216,7 +216,7 @@ ggsave(filename="./pif_deltaF_notitle.png", plot=gg.pif.notitle)
 # Default values
 deltaF = 0
 lambda = 0 # lambda = 0 means fully rational expectations
-gamma = 0.5 # Gamma is backward-looking weight, gamma=0 means purely forward-looking
+gamma = 0.25 # Gamma is backward-looking weight, gamma=0 means purely forward-looking
 deltaB = 0.0 # Weight on most recent observation (current value)
 
 nsim_deltaF <- 201
@@ -284,13 +284,23 @@ df <- bind_rows(df, psipi_deltaF.df)
 
 df.gather <- gather(df, key="Parameter", value="value", c(deltaB, gamma, lambda, psi_pi))
 
-parmlabels <- c(TeX("Panel (A): Backward Weight, $\\delta_B$"), 
-                TeX("Panel (B): Backward Window, $\\gamma$"), 
+parmlabels <- c(TeX("Panel (B): Backward Window, $\\delta_B$"), 
+                TeX("Panel (A): Backward Weight, $\\gamma$"), 
                 TeX("Panel (C): Proportion Naive, $\\lambda$"), 
                 TeX("Panel (D): Taylor Rule Coef. Avg. Inflation, $\\psi_\\psi$"))
 
 df.gather$Parameter <- as.factor(df.gather$Parameter)
 levels(df.gather$Parameter) <- parmlabels
+
+sort_parmlabels <- c(
+                TeX("Panel (A): Backward Weight, $\\gamma$"), 
+                TeX("Panel (B): Backward Window, $\\delta_B$"), 
+                TeX("Panel (C): Proportion Naive, $\\lambda$"), 
+                TeX("Panel (D): Taylor Rule Coef. Avg. Inflation, $\\psi_\\psi$"))
+
+df.gather$Parameter <- factor(df.gather$Parameter, levels=sort_parmlabels, ordered=TRUE)
+
+
 
 ggplot(df.gather, aes(x=value, y=deltaF, color=solution)) +
   geom_point(alpha=alpha, stroke=0, shape=shape, size=size) +

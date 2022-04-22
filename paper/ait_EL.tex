@@ -65,7 +65,7 @@
 
 \begin{document}
 	\begin{frontmatter}
-		\title{Macroeconomic Implications of Cost Shocks With Various Average Inflation Targeting Regimes}
+		\title{Implications for Determinacy with Average Inflation Targeting}
 		\date{\today}
 		\author[1]{Yamin Ahmad}
 		\ead{ahmady@uww.edu}
@@ -147,7 +147,7 @@ where the weight $\delta_B \in (0,1)$ given to the most recent observation. Note
 \begin{equation}\label{eq:backward_all}
 	\pi_t^B = \delta_B \sum_{j=0}^{\infty} (1-\delta_B)^j \pi_{t-j},
 \end{equation}
-where the weight on an observation $j$ periods in the past is given by, $\delta_B (1-\delta_B)^j$. The weights sum to one and converge to zero as observations are more distant. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting. In an alternative framework with an equally-weighted mean over a finite window of size $(m+1)$, the weight on every observation is $1/(m+1)$. The weight of $\delta_B$ could then be thought of as approximating the monetary policy behavior of using a finite window of length $1 / \delta_B$ periods.
+where the weight on an observation $j$ periods in the past is given by, $\delta_B (1-\delta_B)^j$. The weights sum to one and converge to zero as observations are more distant. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting. In an alternative framework with an equally-weighted mean over a finite window of $m$ periods, the weight on every observation is $1/m$. The weight of $\delta_B$ could then be thought of as approximating the monetary policy behavior of using a finite window of length $1 / \delta_B$ periods.
 
 Similarly, suppose $\pi_t^F$ is given by,
 \begin{equation}\label{eq:forward}
@@ -165,51 +165,52 @@ It may be more realistic to suppose that the central bank puts more weight on mo
 
 \subsection{Full Model}
 
-Following \citealp{sims2002}, the model can be expressed in the compact form,
+Following \citet{sims2002}, the model can be expressed in the compact form,
 \begin{equation}
 	\Gamma_0 y_t = \Gamma_1 y_{t-1} + \Psi z_t + \Pi \eta_t
 \end{equation}
 
-where $y_t$ is a vector of the endogenous variables in the model, including $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the three exogenous shocks t, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t$ are the ex-post rational expectations forecast errors, $\eta_t \equiv y_t - E_{t-1} y_t$. \citealp{sims2002} describes a method to solve the model and the conditions for existence and uniqueness (determinacy) of the solution. We use this method to explore parameter values for monetary policy behavior that lead to indeterminacy.
-
-We calibrate the model using the parameters in Table \ref{tb:parms}.
+where $y_t$ is a vector of the endogenous variables in the model, including $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the three exogenous shocks t, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t$ are the ex-post rational expectations forecast errors, $\eta_t \equiv y_t - E_{t-1} y_t$. \citet{sims2002} describes a method to solve the model and the conditions for existence and uniqueness (determinacy) of the solution. We use this method to explore parameter values for monetary policy behavior that lead to indeterminacy.
 
 \begin{table}[htp]
+	\captionsetup{justification=centering}
 	\caption{Parameter Calibrations}\label{tb:parms}
 	\begin{center}
-		\begin{tabular}{lcr} \hline
-			Description & Parameter & Value \\ \hline
+		\begin{tabular}{lcr}
+			Description & Parameter & Value(s) \\ \hline
 			Discount rate (Quarterly) & $\beta$ & 0.99 \\
-			Inverse intertemporal elasticity & $\sigma$ & 2.0 \\
-			Natural rate of interest & $r^n$ & 0.02 \\
-			Phillips curve coefficient & $\kappa$ & 0.1 \\
+			Inverse intertemporal elasticity & $\sigma$ & 0.72 \\
+			Phillips curve coefficient & $\kappa$ & 0.178 \\
 			Monetary policy persistence & $\rho_r$ & 0.7 \\
-			Monetary policy response to average inflation & $\psi_\pi$ & 1.5 \\
-			Monetary policy response to output gap & $\psi_x$ & 0.5 \\
-			Persistence of demand shock & $\rho_x$ & 0.7 \\
-			Persistence of inflation shock & $\rho_\pi$ & 0.7 \\
-			Standard deviation demand shock & $\sigma_x$ & 0.25 \\
-			Standard deviation inflation shock & $\sigma_\pi$ & 0.25 \\
-			\hline
+			Monetary policy response to output gap & $\psi_x$ & 0.5 \\ [0.25pc]
+			\hline \\ [-0.25pc]
+			Baseline Parameters \\ \hline
+			Baseline AIT weight on past inflation & $\gamma$ & $\left\{ 0.0, 0.25 \right\}$ \\
+			Baseline Backward-looking weight & $\delta_B$ & 1.0 \\
+			Baseline Monetary policy response to average inflation & $\psi_\pi$ & 1.5 \\ \hline
 		\end{tabular}
 	\end{center}
 \end{table}
 
-\begin{table}\caption{Parameter Variations Considered}\label{tb:parmsvary}
-	\begin{center}
-		\begin{tabular}{lccc}
-			Description & Parameter & Baseline & Values Considered \\ \hline
-			Backward-looking weight for AIT & $\delta_B$ & 0.25 & $\left\{0.125, 0.25, 1.0 \right\}$ \\  [0.25pc]
-			Forward-looking weight for AIT & $\delta_F$ & 0.25 & $\left\{0.125, 0.25, 1.0 \right\}$ \\  [0.25pc]
-			AIT weight on past inflation & $\gamma$ & $\left\{ 0.0, 1.0 \right\}$ & $\left\{ 0.0, 0.25, 0.75, 1.0\right\}$ \\  [0.25pc]
-			Weight on naive expectations & $\lambda$ & 0.0 & $\left\{ 0.0, 0.25, 0.75 \right\}$ \\ [0.25pc]
-			\hline
-		\end{tabular}
-	\end{center}
-\end{table}
+We calibrate the model using the parameters in \href{tb:parms}{Table} \ref{tb:parms}. In the results section below, we explore determinacy regions for different values of $\delta_F$, the weight placed on the expected value for the next period's inflation in the forward-looking window. We explore how regions of determinacy for this parameter differs with calibrations for the weight placed on past inflation in the AIT window ($\gamma$), the weight placed on the most recent inflation observation in the backward-looking window ($\delta_B$), and the Taylor rule coefficient on average inflation ($\psi_\pi$). The baseline parameters given in \href{tb:parms}{Table} \ref{tb:parms} represent the calibrations we use when not varying each of those particular parameters.
+
+Say where I got these other parameters..
 
 \section{Results}
 
+\begin{figure}
+	\captionsetup{justification=centering}
+	\begin{center}
+		\includegraphics[width=\textwidth]{./determinacy_notitle.png}
+		\ \\ \ \\
+		\parbox{5.5in}{\small{
+			Notes: Larger values for $\delta_F$ imply shorter forward-looking windows. Baseline values in panel (A): $\gamma=0.5$, $\lambda=0.0$, $\psi_{\pi}=1.5$; panel (B): $\lambda=0.0$, $\delta_B=1.0$, $\psi_{\pi}=1.5$; panel (C): $\gamma=0.0$, $\psi_\pi=1.5$. panel (D):  $\gamma=0.0$, $\lambda=0.0$.}
+		}
+	\end{center}
+	\caption{Regions of Determinacy for Forward-Looking Windows}\label{fg:determinacy}
+\end{figure}
+
+\href{fg:determinacy}{Table} \ref{fg:determinacy} shows the regions of determinacy for different values of the forward-looking weight, $\delta_F$, depending on four other parameters in the model. On the vertical axis in each panel are values for $\delta_F$ from 0.0 to 1.0. Given the inverse relationship between the weight on an individual observation and the length of a finite window, can be thought of as shorter forward-looking windows. The first panel demonstrates the importance of using current or past values for inflation in the target window. When $\gamma=0.0$, no weight is put on past or current inflation, and the window is purely forward-looking. When $\gamma=0.0$, the smallest value for $\delta_F$ that delivers indeterminacy is 0.16. Taking the inverse of this value implies a forward-looking window of approximately
 
 
 \bibliographystyle{apalike}
