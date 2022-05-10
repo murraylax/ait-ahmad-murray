@@ -135,21 +135,19 @@ where $\rho_r$ represents the parameter used to smooth the path of interest rate
 
 \subsection{Average Inflation Targeting}
 
-Under AIT the central bank targets an average value of inflation instead of the current inflation rate. The target window may include both backward and forward-looking terms for inflation, and the relative weights for each may be different. Suppose the average inflation target is given by,
+Under AIT the central bank targets an average value of inflation instead of the current inflation rate. The target window may include both backward and forward-looking terms for inflation, and the relative weights for each may be different. The average inflation target is:
 \begin{equation}
 	\pi_t^A = \gamma \pi_t^B + (1-\gamma) \pi_t^F,
 \end{equation}
-where $\gamma \in [0,1]$ is the relative weight given to past inflation versus expected future inflation, $\pi_t^B$ is the backward-looking average inflation, and $\pi_t^F$ is the forward-looking average inflation. $\pi_t^B$ is given by:
+where $\gamma \in [0,1]$ is the relative weight given to past inflation versus expected future inflation, $\pi_t^B$ is the backward-looking average inflation, and $\pi_t^F$ is the forward-looking average inflation, and:
 \begin{equation}\label{eq:backward}
 	\pi_t^B = \delta_B \pi_t + (1-\delta_B) \pi_{t-1}^B,
 \end{equation}
-where $\delta_B \in (0,1)$ is the weight given to the most recent observation. We include the current value for inflation, $\pi_t$, in this ``backward-looking" window.  Repeated substitution reveals $\pi_t^B$ the nature with which the weights declining geometrically with time,
+where $\delta_B \in (0,1)$ is the weight given to the most recent observation. We include the current value for inflation, $\pi_t$, in this ``backward-looking" window.  Repeated substitution reveals $\pi_t^B$ the nature with which the weights declining geometrically with time:
 \begin{equation}\label{eq:backward_all}
 	\pi_t^B = \delta_B \sum_{j=0}^{\infty} (1-\delta_B)^j \pi_{t-j},
 \end{equation}
-where $\delta_B (1-\delta_B)^j$ is the weight on an observation of inflation $j$ periods in the past, such that $\sum_j \delta_B (1-\delta_B)^j=1$ and $\lim_{j \to \infty} \delta_B (1-\delta_B)^j=0$. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting and a weight of $\delta_B$ approximates monetary policy behavior using a equally-weighted finite window of length $1 / \delta_B$ periods.
-
-Similarly, suppose $\pi_t^F$ is given by:
+where $\delta_B (1-\delta_B)^j$ is the weight on an observation of inflation $j$ periods in the past, such that $\sum_j \delta_B (1-\delta_B)^j=1$ and $\lim_{j \to \infty} \delta_B (1-\delta_B)^j=0$. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting and a weight of $\delta_B$ approximates monetary policy behavior using an equally-weighted finite window of length $1 / \delta_B$ periods. Similarly, 
 \begin{equation}\label{eq:forward}
 	\pi_t^F = \delta_F \E_t \pi_{t+1} + (1-\delta_F) \E_t \pi_{t+1}^F,
 \end{equation}
@@ -157,11 +155,8 @@ where $\delta_F \in (0,1)$ is the weight given to next periods expected inflatio
 \begin{equation}\label{eq:forward_all}
 	\pi_t^F = \delta_F \sum_{j=0}^{\infty} (1-\delta_F)^j E_t \pi_{t+1+j},
 \end{equation}
-where the weight on expected inflation rate $j$ periods in the future, $\delta_F (1-\delta_F)^{j}$, declines geometrically with the distance into the future; also $\sum_j \delta_F (1-\delta_F)^{j}=1$ and $\lim_{j \to \infty} \delta_F (1-\delta_F)^j=0$. $1/ \delta_F$ can be considered to approximate the length of an equally-weighted finite forward-looking window.
+where the weight on expected inflation rate $j$ periods in the future, $\delta_F (1-\delta_F)^{j}$, declines geometrically with the distance into the future; also $\sum_j \delta_F (1-\delta_F)^{j}=1$ and $\lim_{j \to \infty} \delta_F (1-\delta_F)^j=0$. $1/ \delta_F$ can be considered to approximate the length of an equally-weighted finite forward-looking window. We vary the parameters $\left\{\delta_B, \delta_F, \gamma, \lambda, \psi_\pi, \psi_x, \rho_r \right\}$ and explore the implications for determinacy below. Note that a standard Taylor-type rule, like equation (\ref{eq:TaylorRule}), emerges as a special case with $\gamma=1.0$ and $\delta_B=1.0$. 
 
-The continuous nature of the forward-looking and backward-looking weighted averages are both mathematically convenient and arguably more realistic than rolling-window arithmetic mean. Equations (\ref{eq:backward}) and (\ref{eq:forward}) are difference equations over a single period. The parameters, $\delta_B$ and $\delta_F$ can be varies on a continuous scale, instead of making discrete choices for rolling window lengths. A standard Taylor-type rule, like equation (\ref{eq:TaylorRule}), is also a special case of the larger model, with $\gamma=1.0$ and $\delta_B=1.0$. By considering values for these parameters below 1.0, we can conveniently describe how AIT frameworks can differ from the standard monetary policy rule.
-
-It may be more realistic to suppose that the central bank puts more weight on more recent past observations than on farther observations. It may be more realistic to suppose too that the central bank puts more weight on expectations for the near future than expectations for the distant future, where inflation forecasts may be less reliable. Similarly, the Fed may put more weight on more recent past inflation than on the history of inflation in the more distant past.
 
 \subsection{Full Model}
 
@@ -169,7 +164,7 @@ Following \citet{sims2002}, the model can be expressed in the compact form,
 \begin{equation}
 	\Gamma_0 y_t = \Gamma_1 y_{t-1} + \Psi z_t + \Pi \eta_t
 \end{equation}
-where $y_t$ is a vector of the endogenous variables in the model, including $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the three exogenous shocks t, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t$ are the ex-post rational expectations forecast errors, $\eta_t \equiv y_t - E_{t-1} y_t$. \citet{sims2002} describes a method to solve the model and the conditions for existence and uniqueness of the solution. We use this method to explore parameter values for monetary policy behavior that lead to indeterminacy (i.e. existence of an infinite number of solutions).
+where $y_t$ is a vector of the endogenous variables, including $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the three exogenous shocks t, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t$ are the ex-post rational expectations forecast errors, $\eta_t \equiv y_t - E_{t-1} y_t$. \citet{sims2002} describes a method to solve the model and the conditions for existence and uniqueness of the solution. We use this method to explore parameter values for monetary policy behavior that lead to indeterminacy (i.e. existence of an infinite number of solutions).
 
 \begin{table}[htp]
 	\captionsetup{justification=centering}
@@ -194,7 +189,7 @@ where $y_t$ is a vector of the endogenous variables in the model, including $x_t
 
 We calibrate the model using the parameters in \href{tb:parms}{Table} \ref{tb:parms}. The values for $\sigma$ and $\kappa$ are set to the median posterior estimates from \citet{smetswouters2007}. We set $\pi^*=0.005$ so that the annualized long-run inflation level is 2\%, the Federal Reserve's explicit target.
 
-In the results section below, we explore determinacy regions for different values of $\delta_F$, the weight placed on the expected value for the next period's inflation in the forward-looking window. We explore how regions of determinacy for this parameter differs with calibrations for the weight placed on past inflation in the AIT window, $\gamma$, the weight placed on the most recent inflation observation in the backward-looking window, $\delta_B$, and the Taylor rule coefficients, $\psi_\pi$, $\psi_x$, and $\rho_r$. The baseline parameters given in \href{tb:parms}{Table} \ref{tb:parms} represent the calibrations we use when not varying each of those particular parameters. We use $\gamma=0.0$ for all calibrations not involving the backward-looking parameter, $\delta_B$, implying monetary policy is purely forward looking. When exploring determinacy ranges for $\delta_B$, we use a weight $\gamma=0.25$. We follow \citet{taylor1993} and use baseline parameters  $\psi_x=0.5$ and $\psi_\pi = 1.5$. We use a high degree of inflation persistence for a baseline ($\rho=0.81$), using the estimated value in \citet{smetswouters2007}.
+In what follows, we explore the determinacy regions for different values of $\delta_F$, the weight placed on the expected value for the next period's inflation in the forward-looking window. We investigate how the regions of determinacy for this parameter differs with calibrations for the weight placed on past inflation in the AIT window, $\gamma$, the weight placed on the most recent inflation observation in the backward-looking window, $\delta_B$, and the Taylor rule coefficients, $\psi_\pi$, $\psi_x$, and $\rho_r$. The baseline parameters given in \href{tb:parms}{Table} \ref{tb:parms} represent the calibrations we use when not varying each of those particular parameters. We use $\gamma=0.0$ for all calibrations not involving the backward-looking parameter, $\delta_B$, implying monetary policy is purely forward looking. When exploring determinacy ranges for $\delta_B$, we use a weight $\gamma=0.25$. We set the baseline values for $\psi_x=0.5$ and $\psi_\pi = 1.5$, and set inflation persistence, ($\rho=0.81$), in our baseline using the estimated value in \citet{smetswouters2007}.
 
 \section{Results}
 
