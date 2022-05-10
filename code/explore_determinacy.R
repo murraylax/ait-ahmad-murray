@@ -20,7 +20,8 @@ sigma <- 1.0/1.38 # Preference parameter: # Schmitt-Grohe and Uribe use 1/2.0, S
 calvo <- 0.66 # Schmitt-Grohe and Uribe use 0.8, Smets and Wouters find 0.66
 kappa <- (1.0-calvo)*(1.0-calvo*beta)/calvo # Phillips curve coefficient
 
-rho_r <- 0.81 # Interest rate smoothing parameter, Smets and Wouters
+#rho_r <- 0.81 # Interest rate smoothing parameter, Smets and Wouters
+rho_r <- 0.0 # Interest rate smoothing parameter, Smets and Wouters
 psi_pi <- 1.50 # Taylor rule response to inflation target
 psi_x <- 0.5 # Taylor rule response to output gap
 
@@ -421,7 +422,7 @@ df.gather <- gather(df, key="param", value="value", c(deltaB, gamma, lambda, psi
 parmlabels <- c(TeX("Panel (B): Backward Window, $\\delta_B$"), 
                 TeX("Panel (A): Backward Weight, $\\gamma$"), 
                 TeX("Panel (C): Proportion Naive, $\\lambda$"), 
-                TeX("Panel (D): Taylor Rule Inflation, $\\psi_\\psi$"),
+                TeX("Panel (D): Taylor Rule Inflation, $\\psi_\\pi$"),
                 TeX("Panel (E): Taylor Rule Output Gap, $\\psi_x$"),
                 TeX("Panel (F): Taylor Rule Persistence, $\\rho_r$")
 )
@@ -433,7 +434,7 @@ sort_parmlabels <- c(
                 TeX("Panel (A): Backward Weight, $\\gamma$"), 
                 TeX("Panel (B): Backward Window, $\\delta_B$"), 
                 TeX("Panel (C): Proportion Naive, $\\lambda$"), 
-                TeX("Panel (D): Taylor Rule Inflation, $\\psi_\\psi$"),
+                TeX("Panel (D): Taylor Rule Inflation, $\\psi_\\pi$"),
                 TeX("Panel (E): Taylor Rule Output Gap, $\\psi_x$"),
                 TeX("Panel (F): Taylor Rule Persistence, $\\rho_r$")
                 )
