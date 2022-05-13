@@ -80,7 +80,7 @@
 
 	\begin{abstract}
 		%\renewcommand{\baselinestretch}{1.5}
-		We use a standard New Keynesian model to explore implications of backward- and forward-looking windows for monetary policy with average inflation targeting and investigate the conditions for determinacy. A uniquely equilibrium rules out sunspot shocks that can lead to self-fulfilling shocks for inflation expectations. We demonstrate how limitations on the length of the forward window depends on other parameters in the model, including other monetary policy parameters and parameters governing expectations formation.
+		We use a standard New Keynesian model to explore implications of backward- and forward-looking windows for monetary policy with average inflation targeting and investigate the conditions for determinacy. A unique equilibrium rules out sunspot shocks that can lead to self-fulfilling shocks for inflation expectations. We find limitations for the length of the forward window and demonstrate how this depends on other parameters in the model, including parameters governing monetary policy and expectations formation.
 
 		\begin{flushleft}
 			{\it JEL Classification}: E50, E52, E58 \newline
@@ -106,36 +106,40 @@ We examine this issue within the context of a standard three-equation New Keynes
 \section{\label{Model}Model}
 This paper builds upon a standard three-equation New Keynesian model along the lines of \cite{clarida1999}.
 
+\subsection{Baseline Framework}
+
 The IS equation is derived from consumer utility maximization and states that the current output gap depends on expectations of next period's output gap, and is negatively related to the real interest rate:
 \begin{equation}\label{eq:ISe}
-	x_t = x_{t+1|t}^e - \frac{1}{\sigma} \left( r_t - \pi_{t+1|t}^e  - r^n  \right) + \xi_t^{x}
+	x_t = x_{t+1|t}^e - \frac{1}{\sigma} \left( r_t - \pi_{t+1|t}^e  - r^n  \right) + \xi_t^{x},
 \end{equation}
-where in period $t$, $x_t$ denotes the output gap (given by the difference between the log of output and its natural rate), $r_t$ is the nominal interest rate, $\pi_t$ the inflation rate, $r^n = 1/\beta - 1$ the natural rate of interest, where $\beta \in (0,1)$ is the household's discount factor; $x_{t+1|t}^e$ and $\pi_{t+1|t}^e$ represent private sector expectations on next period's output gap and inflation rate, respectively. The preference parameter, $\sigma$, is inversely related to consumers' intertemporal elasticity of substitution, and $\xi_t^x$, represents a demand shock. A fraction of agents, $\lambda\in[0,1)$, form na\"ive expectations, so aggregate expectations are given by:
+where $x_t$ denotes the output gap (given by the difference between the log of output and its natural rate), $r_t$ is the nominal interest rate, $\pi_t$ the inflation rate, $r^n = 1/\beta - 1$ the natural rate of interest and $\beta \in (0,1)$ is the household's discount factor, and $x_{t+1|t}^e$ and $\pi_{t+1|t}^e$ represent private sector expectations on next period's output gap and inflation rate, respectively. The preference parameter, $\sigma$, is inversely related to consumers' intertemporal elasticity of substitution, and $\xi_t^x$, represents a demand shock. A fraction of agents, $\lambda\in[0,1)$, form na\"ive expectations, so aggregate expectations are given by,
 \begin{equation}
 	\begin{array}{c}
-		x_{t+1}^e = \lambda x_t + (1-\lambda) \E_t x_{t+1} \\ [1.5pc]
-		\pi_{t+1}^e = \lambda \pi_t + (1-\lambda) \E_t \pi_{t+1} \\
+		x_{t+1}^e = \lambda x_t + (1-\lambda) \E_t x_{t+1}, \\ [1.5pc]
+		\pi_{t+1}^e = \lambda \pi_t + (1-\lambda) \E_t \pi_{t+1}. \\
 	\end{array}
 \end{equation}
 Expectations are fully rational when $\lambda=0$. We explore the implications for indeterminacy when not all agents are fully rational.
 
 The second equation is the Phillips Curve which states that inflation depends on the expectation of next period's inflation and the output gap:
 \begin{equation}\label{eq:PhillipsCurvee}
-	(\pi_t - \pi^*) = \beta (\pi_{t+1|t}^e - \pi^*) + \kappa x_t + \xi_t^{\pi}
+	(\pi_t - \pi^*) = \beta (\pi_{t+1|t}^e - \pi^*) + \kappa x_t + \xi_t^{\pi},
 \end{equation}
 where $\pi^*$ is the long-run steady state inflation rate, $\xi_t^\pi$ is an exogenous cost shock, and $\kappa$ is a reduced form parameter that is inversely related to the degree of price stickiness.\footnote{In a typical model, $\kappa=(1/\omega)(1-\omega)(1-\omega\beta)$, where $\omega \in (0,1)$ is the fraction of firms that do not re-optimize their prices each period. \citet{smetswouters2007} estimate $\omega \approx 0.66$.}
 
 The third relationship governs monetary policy:
 \begin{equation}\label{eq:TaylorRule}
-	r_t = (1-\rho_r)(r^n + \pi^*) + \rho_r r_{t-1} + (1-\rho_r) \left[ \psi_\pi (\pi_t^A - \pi^*) + \psi_x x_t \right] + \epsilon_t^{r}
+	r_t = (1-\rho_r)(r^n + \pi^*) + \rho_r r_{t-1} + (1-\rho_r) \left[ \psi_\pi (\pi_t^A - \pi^*) + \psi_x x_t \right] + \epsilon_t^{r},
 \end{equation}
 where $\rho_r$ captures persistence, and $\psi_\pi$ and $\psi_x$ represent policy responses to inflation and the output gap, respectively. The average inflation target is given by $\pi_t^A$ and $\epsilon_t^r$ is a monetary policy shock.
+
+\subsection{Average Inflation Targeting}
 
 Monetary policy targets an average value of inflation over a target window that may include backward- and forward-looking terms for inflation. The average inflation target is:
 \begin{equation}
 	\pi_t^A = \gamma \pi_t^B + (1-\gamma) \pi_t^F,
 \end{equation}
-where $\gamma \in [0,1]$ is the relative weight given to past inflation versus expected future inflation, $\pi_t^B$ is the backward-looking average inflation, and $\pi_t^F$ is the forward-looking average inflation, and:
+where $\gamma \in [0,1]$ is the relative weight given to past average inflation, $\pi_t^B$, versus expected future average inflation, $\pi_t^F$. The past average inflation is given by,
 \begin{equation}\label{eq:backward}
 	\pi_t^B = \delta_B \pi_t + (1-\delta_B) \pi_{t-1}^B,
 \end{equation}
@@ -143,22 +147,23 @@ where $\delta_B \in (0,1)$ is the weight given to the most recent observation. W
 \begin{equation}\label{eq:backward_all}
 	\pi_t^B = \delta_B \sum_{j=0}^{\infty} (1-\delta_B)^j \pi_{t-j},
 \end{equation}
-where $\delta_B (1-\delta_B)^j$ is the weight on an observation of inflation $j$ periods in the past, and $\sum_j \delta_B (1-\delta_B)^j=1$ and $\lim_{j \to \infty} \delta_B (1-\delta_B)^j=0$. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting and a weight of $\delta_B$ approximates monetary policy behavior using an equally-weighted finite window of length $1 / \delta_B$ periods. Similarly,
+where $\delta_B (1-\delta_B)^j$ is the weight on an observation of inflation $j$ periods in the past, $\sum_j \delta_B (1-\delta_B)^j=1$, and $\lim_{j \to \infty} \delta_B (1-\delta_B)^j=0$. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting and a weight of $\delta_B$ approximates monetary policy behavior using an equally-weighted finite window of length $1 / \delta_B$ periods. Similarly,
 \begin{equation}\label{eq:forward}
 	\pi_t^F = \delta_F \E_t \pi_{t+1} + (1-\delta_F) \E_t \pi_{t+1}^F,
 \end{equation}
-where $\delta_F \in (0,1)$ is the weight given to next period's expected inflation. The forward-looking average is a sum of only expected future outcomes. Repeated substitution of equation (\ref{eq:forward}) similarly,
+where $\delta_F \in (0,1)$ is the weight given to next period's expected inflation. The forward-looking average is a sum of only expected future outcomes. Repeated substitution reveals,
 \begin{equation}\label{eq:forward_all}
 	\pi_t^F = \delta_F \sum_{j=0}^{\infty} (1-\delta_F)^j E_t \pi_{t+1+j},
 \end{equation}
-where the weight on expected inflation rate $j$ periods in the future, $\delta_F (1-\delta_F)^{j}$, declines geometrically with the distance into the future; also $\sum_j \delta_F (1-\delta_F)^{j}=1$ and $\lim_{j \to \infty} \delta_F (1-\delta_F)^j=0$. The value $1/ \delta_F$ approximates the length of an equally-weighted finite forward-looking window. We vary the parameters $\left\{\delta_B, \delta_F, \gamma, \lambda, \psi_\pi, \psi_x, \rho_r \right\}$ and explore the implications for determinacy below. Note that a standard Taylor-type rule, like equation (\ref{eq:TaylorRule}), emerges as a special case with $\gamma=1.0$ and $\delta_B=1.0$.
+where the weight on expected inflation rate $j$ periods in the future, $\delta_F (1-\delta_F)^{j}$, declines geometrically with the distance into the future, $\sum_j \delta_F (1-\delta_F)^{j}=1$, and $\lim_{j \to \infty} \delta_F (1-\delta_F)^j=0$. The value $1/ \delta_F$ approximates the length of an equally-weighted finite forward-looking window. We vary the parameters $\left\{\delta_B, \delta_F, \gamma, \lambda, \psi_\pi, \psi_x, \rho_r \right\}$ and explore the implications for determinacy below. Note that a standard Taylor-type rule emerges as a special case with $\gamma=1.0$ and $\delta_B=1.0$.
 
+\subsection{Full Model}
 
 Following \citet{sims2002}, the model can be expressed as,
 \begin{equation}
 	\Gamma_0 y_t = \Gamma_1 y_{t-1} + \Psi z_t + \Pi \eta_t
 \end{equation}
-where $y_t$ is a vector that includes $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the shocks, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t \equiv y_t - E_{t-1} y_t$ equals the ex-post rational expectations forecast errors. We use the method in \citet{sims2002} to explore parameter values for monetary policy behavior that lead to indeterminacy.
+where $y_t$ is a vector that includes $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the shocks, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t \equiv y_t - E_{t-1} y_t$ equals the ex-post rational expectations forecast errors. We use the method in \citet{sims2002} to explore regions of indeterminacy.
 
 \begin{table}[htp]
 	\captionsetup{justification=centering}
@@ -181,9 +186,9 @@ where $y_t$ is a vector that includes $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B
 	\end{center}
 \end{table}
 
-We calibrate the model using the parameters in \href{tb:parms}{Table} \ref{tb:parms}. The values for $\sigma$ and $\kappa$ are set to estimates from \citet{smetswouters2007}. We set $\pi^*=0.005$ so that the annualized long-run inflation level is 2\%.
+Parameter calibrations are given in \href{tb:parms}{Table} \ref{tb:parms}. Values for $\sigma$ and $\kappa$ are set to estimates from \citet{smetswouters2007}. We set $\pi^*=0.005$ so that the annualized long-run inflation level is 2\%.
 
-We explore the determinacy regions for different values of $\delta_F$, the weight placed on the expected value for the next period's inflation in the forward-looking window. We investigate how the regions of determinacy for this parameter differs with calibrations for the weight placed on past inflation in the AIT window, $\gamma$, the weight placed on the most recent inflation observation in the backward-looking window, $\delta_B$, and the Taylor rule coefficients, $\psi_\pi$, $\psi_x$, and $\rho_r$. The baseline parameters given in \href{tb:parms}{Table} \ref{tb:parms} represent the calibrations we use when not varying each of those particular parameters. We use $\gamma=0.0$ for all calibrations not involving the backward-looking parameter, $\delta_B$, implying monetary policy is purely forward looking. When exploring determinacy ranges for $\delta_B$, we use a weight $\gamma=0.25$. We set the baseline values for $\psi_x=0.5$ and $\psi_\pi = 1.5$, and $\rho=0.0$.
+We explore the determinacy regions for $\delta_F$, the weight placed on the expected value for the next period's inflation in the forward-looking window. We investigate how the regions of determinacy differ with calibrations for the weight placed on past inflation in the AIT window, $\gamma$; the weight placed on the most recent inflation observation in the backward-looking window, $\delta_B$; and the Taylor rule coefficients, $\psi_\pi$, $\psi_x$, and $\rho_r$. The baseline parameters given in \href{tb:parms}{Table} \ref{tb:parms} represent the calibrations we use when not varying each of those particular parameters. We use $\gamma=0.0$ for all calibrations not involving the backward-looking parameter, $\delta_B$, implying monetary policy is purely forward looking. When exploring determinacy ranges for $\delta_B$, we use a weight $\gamma=0.25$. We set the baseline values for $\psi_x=0.5$, $\psi_\pi = 1.5$, and $\rho=0.0$.
 
 \section{Results}
 
@@ -202,13 +207,13 @@ We explore the determinacy regions for different values of $\delta_F$, the weigh
 
 Panel (A) demonstrates the importance of using current or past values inflation in the target window. When $\gamma=0.0$, no weight is put on past or current inflation, and the window is purely forward-looking. The smallest value for $\delta_F$ that delivers determinacy in this scenario is 0.28, so the largest possible forward-looking window is approximately 3.57 quarters. When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
 
-Panel (B) shows how the length of the backward-looking window affects determinacy. We use a baseline value of $\gamma=0.25$ and find minimal variability in values of $\delta_F$ that yield determinacy. Panel (C) reveals that the presence of na\"ive agents have crucial implications for determinacy. When more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
+Panel (B) shows how the length of the backward-looking window affects determinacy. The minimal combinations of values for $\delta_B$ and $\delta_F$ that achieve determinacy are each 0.14, implying the longest the forward-looking and backward-looking windows can be are approximately 7.14 quarters. Panel (C) reveals that the presence of na\"ive agents have crucial implications for determinacy. When more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
 
-Panels (D), (E), and (F) show how the length of the forward-looking window depends on the Taylor Rule coefficients. Larger response to inflation (panel (D)) lead to more restrictive forward windows. Panel (E) shows that larger responses to the output gap are necessary to assure determinacy of forward-looking windows. Values of $\psi_x \geq 0.2$ are necessary for determinacy, and larger values allow for longer windows.  Panel (F) shows monetary policy persistence can play an important role. The stronger is persistence, the longer can be the forward looking window.
+Panels (D), (E), and (F) show how the length of the forward-looking window depends on the Taylor Rule coefficients. Larger response to inflation lead to more restrictive forward windows. Larger responses to the output gap are necessary are also important for determinacy. Values of $\psi_x \geq 0.2$ are necessary and larger values allow for longer forward windows.  Monetary policy persistence can play an important role. The stronger is persistence, the longer can be the forward looking window.
 
 \section{Conclusion}
 
-Forward-looking AIT has important implications to avoid problems of indeterminacy. We find large ranges of indeterminacy, especially when a large portion of aggregate expectations are na\"ive and when little weight is put on the output gap. The Fed can achieve large regions of determinacy with a high rate of monetary policy persistence or with a target window that puts significant weight on current and past inflation. 
+Forward-looking AIT has important implications to avoid problems of indeterminacy. We find large ranges of indeterminacy, especially when a large portion of aggregate expectations are na\"ive and when little weight is put on the output gap. The Fed can achieve assure determinacy with a high rate of monetary policy persistence or with a target window that puts significant weight on current and past inflation.
 
 \bibliographystyle{apalike}
 \bibliography{ait}
