@@ -1,0 +1,101 @@
+\documentclass[english,authoryear,12pt]{elsarticle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fullpage}
+\usepackage[labelfont=bf,singlelinecheck=false,aboveskip=10pt]{caption}
+%\usepackage[font={scriptsize},labelfont={scriptsize},textfont={scriptsize}]{caption}
+%\DeclareCaptionFormat{myformat}{#1#2\\#3}
+\usepackage{amsmath,graphicx,multicol,chngpage,setspace}
+\usepackage{amssymb,amsthm,amstext,amsfonts,enumerate}
+\usepackage[colorlinks=true,linkcolor=black, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage[top=1in, bottom=1in, left=1.0in, right=1.0in]{geometry}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{color,float,multirow,array,hyphenat}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{natbib} % already loaded by elsarticle
+\usepackage{apalike}
+\usepackage{babel}
+\usepackage{appendix}
+\usepackage{afterpage}
+
+
+\setcounter{MaxMatrixCols}{10}
+
+% Global Document settings
+%\graphicspath{{C:/Work/Papers/Murray/Projects/AIT/ait-ahmad-murray/paper/Images}}
+% \linespread{1.3} % Setting it to 1.3 = 1.5 line spacing; 1.6 = double spacing
+\onehalfspacing
+\setlength{\parindent}{0in}
+\setlength{\parskip}{1em}
+
+% Create arg max/min operator
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\E}{\mathbb{E}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} \citeyear{#1}}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+
+% Remove Elsevier preprint message
+\makeatletter
+\def\ps@pprintTitle{%
+	\let\@oddhead\@empty
+	\let\@evenhead\@empty
+	\def\@oddfoot{}%
+	\let\@evenfoot\@oddfoot}
+\makeatother
+
+\begin{document}
+	\begin{frontmatter}
+		\title{Implications for Determinacy with Average Inflation Targeting}
+		\date{\today}
+		\author[1]{Yamin Ahmad \corref{cor1}}
+		\ead{ahmady@uww.edu}
+		\author[2]{James Murray}
+		\ead{jmurray@uwlax.edu}
+
+		\cortext[cor1]{Corresponding author}
+		\address[1]{Dept. of Economics, University of Wisconsin - Whitewater, 809 W. Starin Road, Whitewater, WI 53190, USA}
+		\address[2]{Dept. of Economics, University of Wisconsin - La Crosse, 1725 State St., La Crosse, WI 54601, USA}
+
+	\date{\today}
+
+	\begin{abstract}
+		%\renewcommand{\baselinestretch}{1.5}
+		We use a standard New Keynesian model to explore implications of backward- and forward-looking windows for monetary policy with average inflation targeting and investigate the conditions for determinacy. A unique equilibrium rules out sunspot shocks that can lead to self-fulfilling shocks for inflation expectations. We find limitations for the length of the forward window and demonstrate how this depends on other parameters in the model, including parameters governing monetary policy and expectations formation.
+
+		\begin{flushleft}
+			{\it JEL Classification}: E50, E52, E58 \newline
+			{\it Keywords}: Average Inflation Targeting, Determinacy, Monetary Policy
+		\end{flushleft}
+	\end{abstract}
+
+\end{frontmatter}
+
+%\renewcommand{\baselinestretch}{2.0}
+\renewcommand{\thefootnote}{\arabic{footnote}}%
+\setcounter{page}{1}%
+\setcounter{footnote}{0}%
+
+
+
+
+\end{document}
