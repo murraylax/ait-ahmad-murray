@@ -17,6 +17,7 @@
 \usepackage{natbib} % already loaded by elsarticle
 \usepackage{apalike}
 \usepackage{babel}
+ \usepackage{appendixnumberbeamer}
 % \usepackage{xmpmulti}
 
 \setcounter{MaxMatrixCols}{10}
@@ -106,6 +107,20 @@
 		\item Does the length of the `window' used to construct the average impact stability?
 		\item If we consider a hybrid, what happens if the window lengths (forward vs backwards) are asymmetric? 
 		\item What is the impact of a monetary policy shock under AIT?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Literature}
+	\textcolor{purple}{AIT}
+	\begin{itemize}
+		\item Welfare Implications - \cite{budianto2020}, \cite{eo2020}
+		\item Impact on Inflation expectations - \cite{coibion2020}, \cite{hoffmann2022}
+		\item Impact on boundedly rational expectations - \cite{honka2021}, \cite{budianto2020}
+	\end{itemize}
+		\textcolor{purple}{Monetary policy rules}
+	\begin{itemize}
+		\item Stability of policy rules - \cite{nessen2005}, \cite{mertens2019tying}, \cite{svensson2020monetary}
 	\end{itemize}
 \end{frame}
 
@@ -294,17 +309,50 @@
 				Monetary policy: persistence & $\rho_r$ & 0.0 \\ \hline
 			\end{tabular}
 		\end{center}
-	\captionsetup{justification=centering}
-	\caption{Parameter Calibrations}\label{tb:parms}
+%	\captionsetup{justification=centering}
+%	\caption{Parameter Calibrations}\label{tb:parms}
 	\end{table}
 \end{frame}
 
 \section*{Results}
 
 \begin{frame}
-	\frametitle{Average Inflation Targeting}
+	\frametitle{Regions of Determinacy for Forward Looking Windows}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.7\textheight,keepaspectratio]{../paper/determinacy_notitle.png}
+			\caption{{\tiny In Panel (B), $\gamma = 0.25$, implying a 25\% weight given to the backward-looking window. In all other panels, $\gamma =0$, implying purely forward-looking windows.}}
+%			\vspace*{3pc}\hspace*{2pc}\parbox{0.9\textwidth}{\small{
+%			Notes: In Panel (B), $\gamma = 0.25$, implying a 25\% weight given to the backward-looking window. In all other panels, $\gamma =0$, implying purely forward-looking windows.}
+		\end{figure}% 
+	\end{center}%
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Summary of Results}
+	\begin{enumerate}
+		\setlength{\itemsep}{1em}
+		\item In panel (A), $\delta_F =0.28$ is the smallest value that delivers determinacy in this scenario (the largest possible forward-looking window is approximately 3.57 quarters).
+		\item When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. 
+		\begin{itemize}
+			\item This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
+		\end{itemize}
+		\item In panel (B), the minimal combinations of values for $\delta_B$ and $\delta_F$ that achieve determinacy are each 0.14, implying the longest the forward-looking and backward-looking windows can be are approximately 7.14 quarters.
+		\item In panel (C), when more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
+		\item In general, larger response to inflation lead to more restrictive forward windows
+		\item $\psi_x \geq 0.2$ is necessary for determinacy and larger values allow for longer forward windows.  
+		\item The stronger the persistence of monetary policy, the longer can be the forward looking window.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Work to be done}
+	\textcolor{purple}{Looking ahead ...}
 	\begin{itemize}
-		\item 
+		\setlength{\itemsep}{1em}
+		\item Impact of a monetary policy shock under AIT
+		\item Impact on central bank credibility (crediblity/price shocks)
+		\item Are there thresholds on how far a central bank can deviate from the long run target (... before monetary policy becomes time-inconsistent)?
 	\end{itemize}
 \end{frame}
 
@@ -313,10 +361,11 @@
 	The End!
 \end{frame}
 
+\appendix
 \begin{frame}[allowframebreaks]
 	\frametitle{References}
 	\bibliographystyle{apalike}
-	\bibliography{../paper/ait.bib}
+	\bibliography{./ait_presentation.bib}
 \end{frame}
 
 \end{document}
