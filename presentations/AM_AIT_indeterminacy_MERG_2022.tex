@@ -103,7 +103,7 @@
 			\item Is it an (weighted) average of expected future inflation?
 			\item Is the measure a hybrid?
 		\end{itemize}
-		\item \setlength\itemsep{1em} Are there implications for determinacy? 
+		\item \setlength\itemsep{1em} Are there implications for (in)determinacy? 
 		\item Does the length of the `window' used to construct the average impact stability?
 		\item If we consider a hybrid, what happens if the window lengths (forward vs backwards) are asymmetric? 
 		\item What is the impact of a monetary policy shock under AIT?
@@ -118,9 +118,9 @@
 		\item Impact on Inflation expectations - \cite{coibion2020}, \cite{hoffmann2022}
 		\item Impact on boundedly rational expectations - \cite{honka2021}, \cite{budianto2020}
 	\end{itemize}
-		\textcolor{purple}{Monetary policy rules}
+	\textcolor{purple}{Monetary policy rules}
 	\begin{itemize}
-		\item Stability of policy rules - \cite{nessen2005}, \cite{mertens2019tying}, \cite{svensson2020monetary}
+		\item Indeterminacy and Stability of policy rules - \cite{clarida2000monetary}, \cite{lubik2004testing}, \cite{evans2005monetary}, \cite{nessen2005}, \cite{castelnuovo2015monetary}, \cite{mertens2019tying}, \cite{svensson2020monetary}
 	\end{itemize}
 \end{frame}
 
@@ -287,6 +287,9 @@
 		\end{equation}
 		where $y_t$ is a vector that includes $x_t$, $\pi_t$, $r_t$, $\pi_t^A$, $\pi_t^B$, and $\pi_t^F$; $z_t$ is a vector of the shocks, $\xi_t^x$, $\xi_t^\pi$, and $\xi_t^r$; and $\eta_t \equiv y_t - E_{t-1} y_t$ equals the ex-post rational expectations forecast errors. 
 		\item We use the method in \citet{sims2002} to explore regions of indeterminacy.
+		\begin{itemize}
+			\item i.e. do the rank conditions hold for our system of equations?
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -350,6 +353,7 @@
 	\textcolor{purple}{Looking ahead ...}
 	\begin{itemize}
 		\setlength{\itemsep}{1em}
+		\item Explore the rank condition to see what/how causes system to change from determinate to indeterminate (and vice versa) as model parameters change
 		\item Impact of a monetary policy shock under AIT
 		\item Impact on central bank credibility (crediblity/price shocks)
 		\item Are there thresholds on how far a central bank can deviate from the long run target (... before monetary policy becomes time-inconsistent)?
