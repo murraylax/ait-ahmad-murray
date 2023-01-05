@@ -99,13 +99,13 @@
 \section{\label{Intro}Introduction}
 In 2020, the Federal Reserve laid out an average inflation targeting (AIT) monetary policy framework where inflation could temporarily deviate from the Fed's target in the short run, as long as the average level of inflation in the medium to long run remained consistent with the Fed's target. If inflation remained consistently below its target for some period, it could be followed by a period where inflation would remain above its target.
 
-Recent research has been examining a range of issues related to AIT, including welfare implications (e.g. \citealp{budianto2020}; \citealp{eo2020}), how AIT affects inflation expectations (e.g. \citealp{coibion2020}; \citealp{hoffmann2022}), and implications for boundedly-rational expectations on macroeconomic outcomes (eg: \citealp{honka2021}; \citealp{budianto2020}). A central question that pertains to the literature on the AIT framework is the window for how the `average' level of inflation is determined. It may be based purely on past values of inflation, expectations of future values for inflation, or some combination. In an official statement by the Federal Open Market Committee, they state,
+Recent research has been examining a range of issues related to AIT, including welfare implications and optimal monetary policy (e.g. \citealp{budianto2020}; \citealp{eo2020}, \citealp{nessen2005}), how AIT affects inflation expectations (e.g. \citealp{coibion2020}; \citealp{hoffmann2022}), how AIT affects macroeconomic stability (\citealp{piergallini2022}), and implications for boundedly-rational expectations on macroeconomic outcomes (eg: \citealp{honka2021}; \citealp{budianto2020}). A central question that pertains to the literature on the AIT framework is the window for how the `average' level of inflation is determined. The papers cited above use backward-looking inflation averages for the monetary policy target, but the Fed's average may be based on past values of inflation, expectations of future values for inflation, or some combination. In an official statement by the Federal Open Market Committee states,
 
 \vspace*{-1pc}\begin{quote}
 	"In order to anchor longer-term inflation expectations at this level, the Committee seeks to achieve inflation that averages 2 percent over time, and therefore judges that, following periods when inflation has been running persistently below 2 percent, appropriate monetary policy will likely aim to achieve inflation moderately above 2 percent for some time."\footnote{See \url{https://www.federalreserve.gov/monetarypolicy/files/FOMC_LongerRunGoals.pdf} (accessed on January 5, 2023.)}
 \end{quote}
 
-\vspace*{-1pc} This seems to imply a time frame for the average target that is some combination of past inflation and future inflation.
+\vspace*{-1pc} This implies a time frame for the average target that is a combination of both past inflation and future inflation.
 
 We examine a model of average inflation targeting within the context of a standard three-equation New Keynesian model. We construct a measure of the inflation target that is a weighted average of past observations of inflation, current inflation, and expectations for future values of inflation. We evaluate conditions on monetary policy and the target window to assure determinacy. A rational expectations model is considered determinant when there is exactly one solution for the mathematical the expected value for all variables and one reduced form solution to the model, that together with the realization of structural shocks of the model, determine the outcome for the variables in the model. When there is indeterminacy, there are infinitely many solutions for a mathematical expectation for the variables in the model, each resulting in a different reduced form solution to the model. The continuum of rational expectation solutions can be expressed as a function of "sunspot" shocks. The outcome for the variables in the model is a function of both the realization of the structural and sunspot" shocks, leading to excess macroeconomic volatility. \cite{woodford1987} describes sunspot shocks neatly as random effects having nothing to do with the fundamentals of the model, but are shocks to agents' expectations that are self-fulfilling. For an empirical investigation for how U.S. monetary policy may have led to sunspot shocks and excessive macroeconomic volatility, see, for example, \cite{lubik2004}.
 
@@ -116,9 +116,9 @@ This paper builds upon a standard three-equation New Keynesian model along the l
 
 The IS equation is derived from consumer utility maximization and states that the current output gap depends on expectations of next period's output gap, and is negatively related to the real interest rate:
 \begin{equation}\label{eq:ISe}
-	x_t = x_{t+1|t}^e - \frac{1}{\sigma} \left( r_t - \pi_{t+1|t}^e  - r^n  \right) + \xi_t^{x},
+	x_t = x_{t+1}^e - \frac{1}{\sigma} \left( r_t - \pi_{t+1}^e  - r^n  \right) + \xi_t^{x},
 \end{equation}
-where $x_t$ denotes the output gap (given by the difference between the log of output and its natural rate), $r_t$ is the nominal interest rate, $\pi_t$ the inflation rate, $r^n = 1/\beta - 1$ the natural rate of interest and $\beta \in (0,1)$ is the household's discount factor, and $x_{t+1|t}^e$ and $\pi_{t+1|t}^e$ represent private sector expectations on next period's output gap and inflation rate, respectively. The preference parameter, $\sigma$, is inversely related to consumers' intertemporal elasticity of substitution, and $\xi_t^x$, represents a demand shock. A fraction of agents, $\lambda\in[0,1)$, form na\"ive expectations, so aggregate expectations are given by,
+where $x_t$ denotes the output gap (given by the difference between the log of output and its natural rate), $r_t$ is the nominal interest rate, $\pi_t$ the inflation rate, $r^n = 1/\beta - 1$ the natural rate of interest and $\beta \in (0,1)$ is the household's discount factor, and $x_{t+1}^e$ and $\pi_{t+1}^e$ represent private sector expectations on next period's output gap and inflation rate, respectively. The preference parameter, $\sigma$, is inversely related to consumers' intertemporal elasticity of substitution, and $\xi_t^x$, represents a demand shock. A fraction of agents, $\lambda\in[0,1)$, form na\"ive expectations, so aggregate expectations are given by,
 \begin{equation}
 	\begin{array}{c}
 		x_{t+1}^e = \lambda x_t + (1-\lambda) \E_t x_{t+1}, \\ [1.5pc]
@@ -129,7 +129,7 @@ Expectations are fully rational when $\lambda=0$. We explore the implications fo
 
 The second equation is the Phillips Curve which states that inflation depends on the expectation of next period's inflation and the output gap:
 \begin{equation}\label{eq:PhillipsCurvee}
-	(\pi_t - \pi^*) = \beta (\pi_{t+1|t}^e - \pi^*) + \kappa x_t + \xi_t^{\pi},
+	(\pi_t - \pi^*) = \beta (\pi_{t+1}^e - \pi^*) + \kappa x_t + \xi_t^{\pi},
 \end{equation}
 where $\pi^*$ is the long-run steady state inflation rate, $\xi_t^\pi$ is an exogenous cost shock, and $\kappa$ is a reduced form parameter that is inversely related to the degree of price stickiness.\footnote{In a typical model, $\kappa=(1/\omega)(1-\omega)(1-\omega\beta)$, where $\omega \in (0,1)$ is the fraction of firms that do not re-optimize their prices each period. \citet{smetswouters2007} estimate $\omega \approx 0.66$.}
 
@@ -141,11 +141,13 @@ where $\rho_r$ captures persistence, and $\psi_\pi$ and $\psi_x$ represent polic
 
 \subsection{Average Inflation Targeting}
 
-Monetary policy targets an average value of inflation over a target window that may include backward- and forward-looking terms for inflation. The average inflation target is:
+Monetary policy targets an average value of inflation "over time" that may include backward- and forward-looking terms for inflation. Let the average inflation target be given by,
 \begin{equation}
 	\pi_t^A = \gamma \pi_t^B + (1-\gamma) \pi_t^F,
 \end{equation}
-where $\gamma \in [0,1]$ is the relative weight given to past average inflation, $\pi_t^B$, versus expected future average inflation, $\pi_t^F$. The past average inflation is given by,
+where $\gamma \in [0,1]$ is the relative weight given to past average inflation, $\pi_t^B$, versus expected future average inflation, $\pi_t^F$. 
+
+It is typical in the average inflation targeting literature to define the average inflation target as an arithmetic mean over a defined target "window" with a specific, finite number of quarters in the window. However, the Federal Reserve describes its behavior as targeting average inflation "over time" and does not use the word "window" to describe this goal. It is reasonable to suppose that a weighted average may be an appropriate representation monetary policy, where realizations of inflation more close to the present day have a more relevancy for monetary plicy than inflation outcomes from the more distant past. Suppose the target for past average inflation is given by,
 \begin{equation}\label{eq:backward}
 	\pi_t^B = \delta_B \pi_t + (1-\delta_B) \pi_{t-1}^B,
 \end{equation}
@@ -153,7 +155,9 @@ where $\delta_B \in (0,1)$ is the weight given to the most recent observation. W
 \begin{equation}\label{eq:backward_all}
 	\pi_t^B = \delta_B \sum_{j=0}^{\infty} (1-\delta_B)^j \pi_{t-j},
 \end{equation}
-where $\delta_B (1-\delta_B)^j$ is the weight on an observation of inflation $j$ periods in the past, $\sum_j \delta_B (1-\delta_B)^j=1$, and $\lim_{j \to \infty} \delta_B (1-\delta_B)^j=0$. Smaller values for $\delta_B$ can be viewed as longer backward-looking windows for average inflation targeting and a weight of $\delta_B$ approximates monetary policy behavior using an equally-weighted finite window of length $1 / \delta_B$ periods. Similarly,
+where $\delta_B (1-\delta_B)^j$ is the weight on an observation of inflation $j$ periods in the past, $\sum_j \delta_B (1-\delta_B)^j=1$, and $\lim_{j \to \infty} \delta_B (1-\delta_B)^j=0$. Smaller values for $\delta_B$ imply more weight put on past observations, and so can be viewed as longer backward-looking windows for average inflation targeting. This continuous nature for thinking about the average avoids the awkwardness implied by a finite equally-weighted window, where information on inflation has no relevancy on one side of the window's limit, and has as much relevancy as the present-day on the inside of the limit. Since $\delta_B$ is the weight on the current observation for the calculation of the average, and since the weight on an observation in an equally-weighted arithmetic mean is the inverse of the sample size, a weight of $\delta_B$ can be thought of as an approximation of monetary policy behavior using an equally-weighted finite window of length $1 / \delta_B$ periods. The continuous nature of $\delta_B$ will allow us to more fully explore regions of determinacy.
+
+Considering the forward-looking nature of the target average, similarly let the expected average future inflation given by,
 \begin{equation}\label{eq:forward}
 	\pi_t^F = \delta_F \E_t \pi_{t+1} + (1-\delta_F) \E_t \pi_{t+1}^F,
 \end{equation}
@@ -161,7 +165,7 @@ where $\delta_F \in (0,1)$ is the weight given to next period's expected inflati
 \begin{equation}\label{eq:forward_all}
 	\pi_t^F = \delta_F \sum_{j=0}^{\infty} (1-\delta_F)^j E_t \pi_{t+1+j},
 \end{equation}
-where the weight on expected inflation rate $j$ periods in the future, $\delta_F (1-\delta_F)^{j}$, declines geometrically with the distance into the future, $\sum_j \delta_F (1-\delta_F)^{j}=1$, and $\lim_{j \to \infty} \delta_F (1-\delta_F)^j=0$. The value $1/ \delta_F$ approximates the length of an equally-weighted finite forward-looking window. We vary the parameters $\left\{\delta_B, \delta_F, \gamma, \lambda, \psi_\pi, \psi_x, \rho_r \right\}$ and explore the implications for determinacy below. Note that a standard Taylor-type rule emerges as a special case with $\gamma=1.0$ and $\delta_B=1.0$.
+where the weight on expected inflation rate $j$ periods in the future, $\delta_F (1-\delta_F)^{j}$, declines geometrically with the distance into the future, $\sum_j \delta_F (1-\delta_F)^{j}=1$, and $\lim_{j \to \infty} \delta_F (1-\delta_F)^j=0$. The allow the weight $\delta_F$ to be different than $\delta_B$, as the forward-looking time horizon for the average inflation target may be different than the backward-looking time horizon. The Fed could have a longer forward horizon to give more time and flexibility to bring inflation to its target. Or the Fed could have a shorter forward-horizon, given the greater uncertainty for inflation in the more distant future. The value $1/ \delta_F$ approximates the length of an equally-weighted finite forward-looking window. We vary the parameters $\left\{\delta_B, \delta_F, \gamma, \lambda, \psi_\pi, \psi_x, \rho_r \right\}$ and explore the implications for determinacy below. Note that a standard Taylor-type rule emerges as a special case with $\gamma=1.0$ and $\delta_B=1.0$.
 
 \subsection{Full Model}
 
@@ -209,13 +213,13 @@ We explore the determinacy regions for $\delta_F$, the weight placed on the expe
 	\vspace*{-4pc}\caption{Regions of Determinacy for Forward-Looking Windows}\label{fg:determinacy}
 \end{figure}
 
-\href{fg:determinacy}{Figure} \ref{fg:determinacy} shows the regions of determinacy for different values of the forward-looking weight, $\delta_F$, depending on four other parameters in the model. Given the inverse relationship between the weight on an individual observation and the length of a finite window, larger values for $\delta_F$ imply shorter forward-looking windows. The largest value considered, 0.5, approximates a two-quarter window.
+\href{fg:determinacy}{Figure} \ref{fg:determinacy} shows the regions of determinacy for different values of the forward-looking weight, $\delta_F$, depending on six other parameters in the model. Given the inverse relationship between the weight on an individual observation and the length of a finite window, larger values for $\delta_F$ imply shorter forward-looking windows. The largest value considered, 0.5, approximates a two-quarter window.
 
 Panel (A) demonstrates the importance of using current or past values of inflation in the target window. When $\gamma=0.0$, no weight is put on past or current inflation, and the window is purely forward-looking. The smallest value for $\delta_F$ that delivers determinacy in this scenario is 0.28, so the largest possible forward-looking window is approximately 3.57 quarters. When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
 
 Panel (B) shows how the length of the backward-looking window affects determinacy. The minimal combinations of values for $\delta_B$ and $\delta_F$ that achieve determinacy are each 0.14, implying the longest the forward-looking and backward-looking windows can be are approximately 7.14 quarters. Panel (C) reveals that the presence of na\"ive agents have crucial implications for determinacy. When more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
 
-Panels (D), (E), and (F) show how the length of the forward-looking window depends on the Taylor Rule coefficients. Larger response to inflation lead to more restrictive forward windows. Larger responses to the output gap are also important for determinacy. Values of $\psi_x \geq 0.2$ are necessary and larger values allow for longer forward windows.  Monetary policy persistence can play an important role. The stronger is persistence, the longer can be the forward looking window.
+Panels (D), (E), and (F) show how the length of the forward-looking window depends on the Taylor Rule coefficients. Larger response to inflation lead to more restrictive forward windows. Larger responses to the output gap are also important for determinacy. Values of $\psi_x \geq 0.2$ are necessary and larger values allow for longer forward windows.  Monetary policy persistence also plays important role in that the stronger is persistence, the longer can be the forward looking window.
 
 \section{Conclusion}
 
