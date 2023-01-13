@@ -1,0 +1,124 @@
+\documentclass[english,authoryear,12pt]{elsarticle}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fullpage}
+\usepackage[labelfont=bf,singlelinecheck=false,aboveskip=10pt]{caption}
+%\usepackage[font={scriptsize},labelfont={scriptsize},textfont={scriptsize}]{caption}
+%\DeclareCaptionFormat{myformat}{#1#2\\#3}
+\usepackage{amsmath,graphicx,multicol,chngpage,setspace}
+\usepackage{amssymb,amsthm,amstext,amsfonts,enumerate}
+\usepackage[colorlinks=true,linkcolor=black, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage[top=1in, bottom=1in, left=1.0in, right=1.0in]{geometry}
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{color,float,multirow,array,hyphenat}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{natbib} % already loaded by elsarticle
+\usepackage{apalike}
+\usepackage{babel}
+\usepackage{appendix}
+\usepackage{afterpage}
+
+
+\setcounter{MaxMatrixCols}{10}
+
+% Global Document settings
+%\graphicspath{{C:/Work/Papers/Murray/Projects/AIT/ait-ahmad-murray/paper/Images}}
+% \linespread{1.3} % Setting it to 1.3 = 1.5 line spacing; 1.6 = double spacing
+\onehalfspacing
+\setlength{\parindent}{0in}
+\setlength{\parskip}{1em}
+
+% Create arg max/min operator
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\E}{\mathbb{E}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+\newcommand{\prbf}[1]{\textbf{#1}}
+\newcommand{\prit}[1]{\textit{#1}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqa}{\begin{eqnarray}}
+\newcommand{\eeqa}{\end{eqnarray}}
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+\newcommand{\script}[1]{\begin{cal}#1\end{cal}}
+\newcommand{\citee}[1]{\citename{#1} \citeyear{#1}}
+\newcommand{\h}[1]{\hat{#1}}
+\newcommand{\ds}{\displaystyle}
+
+% Remove abstract
+\makeatletter
+  \long\def\pprintMaketitle{\clearpage
+  \iflongmktitle\if@twocolumn\let\columnwidth=\textwidth\fi\fi
+  \resetTitleCounters
+  \def\baselinestretch{1}%
+  \printFirstPageNotes
+  \begin{center}%
+ \thispagestyle{pprintTitle}%
+   \def\baselinestretch{1}%
+    \Large\@title\par\vskip18pt
+    \normalsize\elsauthors\par\vskip10pt
+    \footnotesize\itshape\elsaddress\par\vskip36pt
+    % \hrule\vskip12pt
+    % \ifvoid\absbox\else\unvbox\absbox\par\vskip10pt\fi
+    % \ifvoid\keybox\else\unvbox\keybox\par\vskip10pt\fi
+    % \hrule\vskip12pt
+    \end{center}%
+  \gdef\thefootnote{\arabic{footnote}}%
+  }
+\makeatother
+
+% Remove Elsevier preprint message
+\makeatletter
+\def\ps@pprintTitle{%
+	\let\@oddhead\@empty
+	\let\@evenhead\@empty
+	\def\@oddfoot{}%
+	\let\@evenfoot\@oddfoot}
+\makeatother
+
+\begin{document}
+	\begin{frontmatter}
+		\title{Summary of Revisions in Response to Editor and Reviewers: Implications for Determinacy with Average Inflation Targeting}
+		\date{\today}
+		\author[1]{Yamin Ahmad \corref{cor1}}
+		\ead{ahmady@uww.edu}
+		\author[2]{James Murray}
+		\ead{jmurray@uwlax.edu}
+
+		\cortext[cor1]{Corresponding author}
+		\address[1]{Dept. of Economics, University of Wisconsin - Whitewater, 809 W. Starin Road, Whitewater, WI 53190, USA}
+		\address[2]{Dept. of Economics, University of Wisconsin - La Crosse, 1725 State St., La Crosse, WI 54601, USA}
+
+\end{frontmatter}
+
+%\renewcommand{\baselinestretch}{2.0}
+\renewcommand{\thefootnote}{\arabic{footnote}}%
+\setcounter{page}{1}%
+\setcounter{footnote}{0}%
+
+Thank you for the opportunity to revise and resubmit this article for \textit{Economics Bulletin}. Here we document a list of our comments and revisions to the paper in response to the editor and reviewers for the journal.
+
+\begin{itemize}
+	\item In response to Reviewer \#1 (and Reviewer \#2 as described in the third bullet), we expanded the discussion of average inflation targeting and indeterminacy in the introduction to take advantage of the additional space \textit{Economics Bulletin} allows.  
+	\item We cite Nessen and Vestin (2005) and Piergallini (2022) in the introduction as suggested by Reviewer \#1. Nessen and Vestin (2005)  discuss average inflation targeting in the context of optimal monetary policy, with alternative viewes for the forward-looking nature of price setting (i.e. in the Phillips curve). Piergallini (2022) demonstrates how an average inflation targeting scheme with a large weight on distant observations of inflation can insure determinacy and avoid liquidity traps. Given the page limitations of the journal, we do not expand upon these contributions, but do note that these works and the others cited consider a backward-looking framework for the inflation target, and we motivate our investigation into forward-looking inflation targeting.
+	\item As suggested by Reviewer \#2, we added some discussion on what we mean by determinacy versus indeterminacy. We added this discussion in the introduction, instead of the results section as the reviewer suggestion, and included an additional citation. The method we use to identify whether the model is determinant or indeterminant under various parameter calibrations is described by Sims (2002), which we cite in section 2.3. 
+	\item In response to Reviewer \#1 use of the word "window", we added some discussion to be more explicit on our meaning of the word "window", and we add some motivation for our more continuous approach. Our windows are not finite windows under which an arithmetic mean is calculated, but rather infinite weighted averages, where the weight decline geometrically with time distance from the current period. The more recent past is weighted more heavily than the more distant past, and expectations of the more immediate future are weighted more heavily than expectations of the more distant future. We discuss this in more detail in the paragraph following equation (7). 
+	\item Reviewer \#1 identified unnecessary use of two different notations for the same expectation, $x^e_{t+1|t}$ and $x^e_{t+1}$ for output gap expectations and $\pi^e_{t+1|t}$ and $\pi^e_{t+1}$. We changed all of these to $x^e_{t+1}$ and $\pi^e_{t+1}$, respectively.
+	\item Reviewer \#1 it their comment at the end of page 2 and page 3 discusses the forward-looking versus backward-looking weights, $\delta_F$ and $\delta_B$. To clear up some confusion, we added some discussion following equation (9) why it is possible the Fed would use different weights for its forward looking average inflation versus backward-looking average inflation. At the top of page 3 in Reviewer \#1's comments, the reviewer suggests a "change of notation," but this also changes the definition of the forward-looking inflation to instead be backward looking. This equation is not a correct implication of our model, nor are the mathematical results that follow.
+	\item Reviewer \#1 asks about the steady state of the model. The steady states are defined in the set up of the model. The steady state interest rate is $r^n = 1/\beta - 1$, as described after equation (1), steady state inflation is the Fed's target, $\pi^*$, as described after equation (3), and the steady state output gap is 0.0. This is a linearized solution to a standard New Keynesian model that is described well in Clarida, Gali, and Gertler (1999) which we cite at the beginning of Section 2.
+	\item Reviewer \#1 correctly identifies that in our line, "regions of determinacy for different values of the forward-looking weight, $\delta_F$, depending on four other parameters in the model," that we actually consider six other parameters. We fixed this, changing our description to refer to six parameters.
+	\item Following the suggestion by Reviewer \#1 to be more explicit on the role of monetary policy persistence, we changed the pair of sentences to the one sentence, "Monetary policy persistence also plays important role in that the stronger is persistence, the longer can be the forward looking window."
+
+	\item We fixed the two minor grammar points identified by Reviewer \#2 on pages 5 and 6, following their suggestion.
+\end{itemize}
+
+
+\end{document}
