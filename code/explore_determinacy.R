@@ -143,7 +143,7 @@ ggplot(lambda_deltaF.df, aes(x=lambda, y=deltaF, color=solution)) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position="bottom") +
-  labs(title="Regions of Determinacy for Forward Windows\n With Naive Expectations", 
+  labs(title="Regions of Determinacy for Forward Windows\nWith Naive Expectations", 
        x=TeX("Proportion of Naive Expectations: $\\lambda$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"),
        col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
