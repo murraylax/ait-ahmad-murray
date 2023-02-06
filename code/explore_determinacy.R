@@ -4,8 +4,8 @@ library(latex2exp)
 # Plot parameters
 shape <- 19 # Circle
 size <- 2.5 # Size of the point
-#scale_colors <- c("firebrick4", "dodgerblue4")
-scale_colors <- c("firebrick2", "dodgerblue2")
+scale_colors <- c("firebrick4", "dodgerblue4")
+#scale_colors <- c("firebrick2", "dodgerblue2")
 #scale_colors <- c("gray47", "gray87")
 alpha <- 1
 
@@ -20,8 +20,8 @@ sigma <- 1.0/1.38 # Preference parameter: # Schmitt-Grohe and Uribe use 1/2.0, S
 calvo <- 0.66 # Schmitt-Grohe and Uribe use 0.8, Smets and Wouters find 0.66
 kappa <- (1.0-calvo)*(1.0-calvo*beta)/calvo # Phillips curve coefficient
 
-#rho_r <- 0.81 # Interest rate smoothing parameter, Smets and Wouters
-rho_r <- 0.0 # Interest rate smoothing parameter, Smets and Wouters
+#row_r <- 0.81 # Interest rate smoothing parameter, Smets and Wouters
+row_r <- 0.0 # Interest rate smoothing parameter, Smets and Wouters
 psi_pi <- 1.50 # Taylor rule response to inflation target
 psi_x <- 0.5 # Taylor rule response to output gap
 
@@ -84,7 +84,7 @@ ggplot(gamma_deltaF.df, aes(x=gamma, y=deltaF, color=solution)) +
   theme(text=element_text(size=18)) +
   theme(legend.position="bottom") +
   labs(title="Regions of Determinacy over Backward-Looking Weight and\nLength of Forward-Looking Windows",
-       x=TeX("Backward-Window Weight: $\\gamma$"), y=TeX("Forward Weight: $\\delta_F$"),
+       x=TeX("Backward-Window Weight: $\\gamma$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"),
        col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
   gg.gf
@@ -143,9 +143,8 @@ ggplot(lambda_deltaF.df, aes(x=lambda, y=deltaF, color=solution)) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position="bottom") +
-  labs(title="Regions of Determinacy for Forward Windows with Naive Expectations", 
-       x=TeX("Proportion of Naive Expectations: $\\lambda$"), y=TeX("Forward Weight: $\\delta_F$"),
-       x="lambda", y="delta_F", 
+  labs(title="Regions of Determinacy for Forward Windows\n With Naive Expectations", 
+       x=TeX("Proportion of Naive Expectations: $\\lambda$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"),
        col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
   gg.lf
@@ -205,7 +204,7 @@ ggplot(psipi_deltaF.df, aes(x=psi_pi, y=deltaF, color=solution)) +
   theme(text=element_text(size=18)) +
   theme(legend.position = "bottom") +
   labs(title="Regions of Determinacy over Forward Windows and\n Monetary Policy Response to Inflation", 
-       x=TeX("Taylor Rule Coefficient on Average Inflation: $\\psi_\\pi$"), y=TeX("Forward Weight: $\\delta_F$"),
+       x=TeX("Taylor Rule Coefficient on Average Inflation: $\\psi_{\\ \\pi}$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"),
        col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
   gg.pif
@@ -264,7 +263,7 @@ ggplot(deltaB_deltaF.df, aes(x=deltaB, y=deltaF, color=solution)) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position = "bottom") +
-  labs(title="Regions of Determinacy for Forward & Backward Windows", x=TeX("Backward Weight: $\\delta_B$"), y=TeX("Forward Weight: $\\delta_F$"), col="") +
+  labs(title="Regions of Determinacy for Forward & Backward Windows", x=TeX("Backward Weight: $\\delta_{\\ B}$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"), col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) +
   theme(legend.position = "bottom") ->
   gg.bf
@@ -278,7 +277,7 @@ ggsave(filename="./deltab_deltaF_notitle.png", plot=gg.bf.notitle)
 
 
 
-# Search over rho_r
+# Search over rho_{ r}
 # Default values
 deltaF = 0
 lambda = 0 # lambda = 0 means fully rational expectations
@@ -325,7 +324,7 @@ ggplot(rho_deltaF.df, aes(x=rho, y=deltaF, color=solution)) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position = "bottom") +
-  labs(title="Regions of Determinacy for Forward Windows and \nMonetary Policy Persistence", x=TeX("Monetary Policy Persistence: $\\rho_r$"), y=TeX("Forward Weight: $\\delta_F$"), col="") +
+  labs(title="Regions of Determinacy for Forward Windows and \nMonetary Policy Persistence", x=TeX("Monetary Policy Persistence: $\\rho_{\\ r}$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"), col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) +
   theme(legend.position = "bottom") ->
   gg.rf
@@ -389,7 +388,7 @@ ggplot(psix_deltaF.df, aes(x=psi_x, y=deltaF, color=solution)) +
   theme_bw() +
   theme(text=element_text(size=18)) +
   theme(legend.position = "bottom") +
-  labs(title="Regions of Determinacy for Forward Windows and \nMonetary Policy Response to Output Gap", x=TeX("Monetary Policy Response to Output: $\\psi_x$"), y=TeX("Forward Weight: $\\delta_F$"), col="") +
+  labs(title="Regions of Determinacy for Forward Windows and \nMonetary Policy Response to Output Gap", x=TeX("Monetary Policy Response to Output: $\\psi_{\\ x}$"), y=TeX("Forward Weight: $\\delta_{\\ F}$"), col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) +
   theme(legend.position = "bottom") ->
   gg.psixf
@@ -419,12 +418,12 @@ df <- bind_rows(df, rho_deltaF.df)
 
 df.gather <- gather(df, key="param", value="value", c(deltaB, gamma, lambda, psi_pi, psi_x, rho))
 
-parmlabels <- c(TeX("Panel (B): Backward Window, $\\delta_B$"), 
+parmlabels <- c(TeX("Panel (B): Backward Window, $\\delta_{\\ B}$"), 
                 TeX("Panel (A): Backward Weight, $\\gamma$"), 
                 TeX("Panel (C): Proportion Naive, $\\lambda$"), 
-                TeX("Panel (D): Taylor Rule Inflation, $\\psi_\\pi$"),
-                TeX("Panel (E): Taylor Rule Output Gap, $\\psi_x$"),
-                TeX("Panel (F): Taylor Rule Persistence, $\\rho_r$")
+                TeX("Panel (D): Taylor Rule Inflation, $\\psi_{\\ \\pi}$"),
+                TeX("Panel (E): Taylor Rule Output Gap, $\\psi_{\\ x}$"),
+                TeX("Panel (F): Taylor Rule Persistence, $\\rho_{\\ r}$")
 )
 
 df.gather$Parameter <- as.factor(df.gather$param)
@@ -432,11 +431,11 @@ levels(df.gather$Parameter) <- parmlabels
 
 sort_parmlabels <- c(
                 TeX("Panel (A): Backward Weight, $\\gamma$"), 
-                TeX("Panel (B): Backward Window, $\\delta_B$"), 
+                TeX("Panel (B): Backward Window, $\\delta_{\\ B}$"), 
                 TeX("Panel (C): Proportion Naive, $\\lambda$"), 
-                TeX("Panel (D): Taylor Rule Inflation, $\\psi_\\pi$"),
-                TeX("Panel (E): Taylor Rule Output Gap, $\\psi_x$"),
-                TeX("Panel (F): Taylor Rule Persistence, $\\rho_r$")
+                TeX("Panel (D): Taylor Rule Inflation, $\\psi_{\\ \\pi}$"),
+                TeX("Panel (E): Taylor Rule Output Gap, $\\psi_{\\ x}$"),
+                TeX("Panel (F): Taylor Rule Persistence, $\\rho_{\\ r}$")
                 )
 
 df.gather$Parameter <- factor(df.gather$Parameter, levels=sort_parmlabels, ordered=TRUE)
@@ -455,7 +454,7 @@ ggplot(df.gather, aes(x=value, y=deltaF, color=solution)) +
   theme(plot.margin = margin(b = 22, t=5, r=5, l=5)) +
   theme(panel.spacing = unit(1, "lines")) +
   theme(strip.placement = "outside", strip.background = element_rect(size=0, fill="white")) +
-  labs(title="Regions of Determinacy for Forward-Looking Windows", x="", y=TeX("Forward Weight: $\\delta_F$"), col="") +
+  labs(title="Regions of Determinacy for Forward-Looking Windows", x="", y=TeX("Forward Weight: $\\delta_{\\ F}$"), col="") +
   guides(color = guide_legend(override.aes = list(size=10, alpha=1))) ->
   gg.all
 
