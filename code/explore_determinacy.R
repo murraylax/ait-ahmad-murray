@@ -6,7 +6,7 @@ shape <- 19 # Circle
 size <- 2.5 # Size of the point
 #scale_colors <- c("firebrick4", "dodgerblue4")
 scale_colors <- c("firebrick2", "dodgerblue2")
-scale_colors <- c("gray47", "gray87")
+#scale_colors <- c("gray47", "gray87")
 alpha <- 1
 
 
