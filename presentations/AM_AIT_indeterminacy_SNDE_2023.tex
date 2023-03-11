@@ -331,40 +331,140 @@
 	\end{center}%
 \end{frame}
 
-\begin{frame}[allowframebreaks]
-	\frametitle{Summary of Results}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{enumerate}
-				\setlength{\itemsep}{1em}
-				\item In panel (A), $\delta_F =0.28$ is the smallest value that delivers determinacy in this scenario (the largest possible forward-looking window is approximately 3.57 quarters).
-				\item When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. 
-				\begin{itemize}
-					\item This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
-				\end{itemize}
-			\end{enumerate}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{center}
-				\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{../code/gamma_deltaF_notitle.png}
-			\end{center}
-		\end{column}
-	\end{columns}
-	
+\begin{frame}
+	\frametitle{Varying the relative weight on past inflation, $\gamma$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{../code/gamma_deltaF.png}
+		\end{figure}% 
+		\end{center}%
+		\begin{enumerate}
+			\setlength{\itemsep}{1em}
+			\item In panel (A), $\delta_F =0.28$ is the smallest value that delivers determinacy in this scenario (the largest possible forward-looking window is approximately 3.57 quarters).
+		\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Varying the relative weight on past inflation, $\gamma$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{../code/gamma_deltaF.png}
+		\end{figure}% 
+	\end{center}%
 	\begin{enumerate}
+		\setcounter{enumi}{1}
 		\setlength{\itemsep}{1em}
-		\item In panel (A), $\delta_F =0.28$ is the smallest value that delivers determinacy in this scenario (the largest possible forward-looking window is approximately 3.57 quarters).
 		\item When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. 
 		\begin{itemize}
 			\item This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
 		\end{itemize}
-		\item In panel (B), the minimal combinations of values for $\delta_B$ and $\delta_F$ that achieve determinacy are each 0.14, implying the longest the forward-looking and backward-looking windows can be are approximately 7.14 quarters.
-		\item In panel (C), when more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
-		\item In general, larger response to inflation lead to more restrictive forward windows
-		\item $\psi_x \geq 0.2$ is necessary for determinacy and larger values allow for longer forward windows.  
-		\item The stronger the persistence of monetary policy, the longer can be the forward looking window.
 	\end{enumerate}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Varying the backward-window weight, $\delta_B$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.5\textheight,keepaspectratio]{../code/deltab_deltaF.png}
+		\end{figure}% 
+	\end{center}%
+	\begin{enumerate}
+		\setcounter{enumi}{2}
+		\setlength{\itemsep}{1em}
+		\item The minimal combinations of values for $\delta_B$ and $\delta_F$ that achieve determinacy are each 0.14, implying the longest the forward-looking and backward-looking windows can be are approximately 7.14 quarters.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Varying the Proportion of na\"ive expectations, $\lambda$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{../code/lambda_deltaF.png}
+		\end{figure}% 
+	\end{center}%
+	\begin{enumerate}
+		\setcounter{enumi}{3}
+		\setlength{\itemsep}{1em}
+		\item When more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Varying the weight on the inflation term, $\psi_\pi$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{../code/pi_deltaF.png}
+		\end{figure}% 
+	\end{center}%
+	\begin{enumerate}
+		\setcounter{enumi}{4}
+		\setlength{\itemsep}{1em}
+		\item In general, a larger response to inflation leads to more restrictive (shorter) forward windows
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Varying the weight on the output-gap term, $\psi_x$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{../code/psix_deltaF.png}
+		\end{figure}% 
+	\end{center}%
+	\begin{enumerate}
+		\setcounter{enumi}{5}
+		\setlength{\itemsep}{1em}
+		\item $\psi_x \geq 0.2$ is necessary for determinacy and larger values allow for longer forward windows.  
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Varying the weight on policy persistence, $\rho_r$}	
+	\begin{center}		
+		\begin{figure}%
+			\includegraphics[width=\textwidth,height=0.6\textheight,keepaspectratio]{../code/rho_deltaF.png}
+		\end{figure}% 
+	\end{center}%
+	\begin{enumerate}
+		\setcounter{enumi}{6}
+		\setlength{\itemsep}{1em}
+		\item The stronger the persistence of monetary policy, the longer can be the forward looking window.  
+	\end{enumerate}
+\end{frame}
+
+%\begin{frame}[allowframebreaks]
+%	\frametitle{Summary of Results}
+%	\begin{columns}
+%		\begin{column}{0.5\textwidth}
+%			\begin{enumerate}
+%				\setlength{\itemsep}{1em}
+%				\item In panel (A), $\delta_F =0.28$ is the smallest value that delivers determinacy in this scenario (the largest possible forward-looking window is approximately 3.57 quarters).
+%				\item When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. 
+%				\begin{itemize}
+%					\item This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
+%				\end{itemize}
+%			\end{enumerate}
+%		\end{column}
+%		\begin{column}{0.5\textwidth}
+%			\begin{center}
+%				\includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{../code/gamma_deltaF_notitle.png}
+%			\end{center}
+%		\end{column}
+%	\end{columns}
+%	
+%	\begin{enumerate}
+%		\setlength{\itemsep}{1em}
+%		\item In panel (A), $\delta_F =0.28$ is the smallest value that delivers determinacy in this scenario (the largest possible forward-looking window is approximately 3.57 quarters).
+%		\item When $\gamma \geq 0.63$, all possible forward-looking windows yield determinate solutions. 
+%		\begin{itemize}
+%			\item This implies, though, that the target window has at least a 63\% weight on the current inflation rate, and therefore at most a 37\% weight on future inflation.
+%		\end{itemize}
+%		\item In panel (B), the minimal combinations of values for $\delta_B$ and $\delta_F$ that achieve determinacy are each 0.14, implying the longest the forward-looking and backward-looking windows can be are approximately 7.14 quarters.
+%		\item In panel (C), when more than 40\% of agents form na\"ive expectations, no purely forward-looking window for AIT leads to determinacy.
+%		\item In general, larger response to inflation lead to more restrictive forward windows
+%		\item $\psi_x \geq 0.2$ is necessary for determinacy and larger values allow for longer forward windows.  
+%		\item The stronger the persistence of monetary policy, the longer can be the forward looking window.
+%	\end{enumerate}
+%\end{frame}
 
 \begin{frame}
 	\frametitle{Work to be done}
@@ -380,7 +480,8 @@
 
 \begin{frame}
 	\centering
-	The End!
+	The End! \\
+	Thank you for your questions and comments.
 \end{frame}
 
 \appendix
